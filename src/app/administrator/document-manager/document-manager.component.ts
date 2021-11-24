@@ -7,49 +7,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentManagerComponent implements OnInit {
 
-  tws:any;
-  salesReg:any;
-  rpt:any;
+  tws?: File;
+  srg?: File;
+  rpt?: File;
 
-
-  tws1:boolean=false;
-  salesReg1:boolean=false;
-  rpt1:boolean=false;
+  file:any;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  myUploader(event:any) {
+    //event.files == files to upload
 
-  onTwsUpload(event:any) {
-    this.tws=event.files;
-    console.log(this.tws,"file upload");
-    if(this.tws)
-    {
-      this.tws1=true;
-    }
+    // this.tws = event.files;
+    // console.log(this.tws);
+
+    // console.log("yoyo");
+    
+    // console.log(event);
+    
+    this.file = event.target.files[0];
+    console.log(this.file);
+    
+    
+    
+    
   }
 
+  myUploader1(event:any) {
+    //event.files == files to upload
+    this.srg = event.files;
 
-  onSrUpload(event:any) {
-    this.salesReg=event.files;
-    console.log(this.salesReg,"file upload");
-    if(this.salesReg)
-    {
-      this.salesReg1=true;
-    }
+    
+  }
+  myUploader2(event:any) {
+    //event.files == files to upload
+    
+    this.rpt = event.files;
   }
 
+  
 
-  onRptUpload(event:any) {
-    this.rpt=event.files;
-    console.log(this.rpt,"file upload");
-    if(this.rpt)
-    {
-      this.rpt1=true;
-    }
+
+  validate(){
+    console.log("in validate");
+    
   }
+
 }
 
 

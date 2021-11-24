@@ -1,0 +1,26 @@
+ th, td {
+    border: 1px solid black;
+  }
+
+  p-table {
+    border-spacing: 0.5rem;
+    border-collapse: collapse;
+  }
+  
+
+
+p-table {
+    border-spacing: 0.5rem;
+  }
+  td {
+    padding: 0.5rem;
+  }
+  
+  td:nth-child(1) { background: hsl(149, 23%, 44%); }
+  td:nth-child(2) { background: hsl(160, 47%, 76%); }
+  td:nth-child(3) { background: hsl(170, 70%, 50%); }
+  td:nth-child(4) { background: hsl(180, 80%, 50%); }
+  td:nth-child(5) { background: hsl(192, 25%, 45%); }
+  td:nth-child(6) { background: hsl(210, 1%, 49%); }
+  
+  
