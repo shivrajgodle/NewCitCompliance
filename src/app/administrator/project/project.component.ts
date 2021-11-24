@@ -9,8 +9,8 @@ interface Year{
   year:number;
 } 
 
-interface cName{
-  cName:string;
+interface Activity{
+  activity:string;
 }
 
 @Component({
@@ -31,6 +31,11 @@ checked2: boolean = true;
 //variable for fetching data
 client1:Client[] = [];
 project1:Project[]=[];
+
+clientData:any[]=[];
+
+activities:Activity[]=[];
+
 project!: Project;
 
 submitted?:boolean;
@@ -43,28 +48,27 @@ selectedUser!:boolean;
 
 selectedClient!:string;
 selectedYear!:number;
+selectedActivity!:string;
 
+itr:any;
 
 cNames:any;
-years!:any;
+years:Year[];
 
 constructor(private obj:ClientServiceService, private pro:ProjectServiceService) {
   this.years=[];
-  for(let i=1950;i<=2050;i++)
+  for(let i=1951;i<=2050;i++)
   {
     this.years.push({
-      year:i
-    } );
-  }  
+      year:i      
+    });
+  }
 
+  this.activities=[
+    {activity:'Gross Return'},
+    {activity:'Net Returns'}
+  ]
 
-
-  // for(let i=0;i<this.client1.length;i++)
-  // {
-  //   this.cNames[i]=this.client1[i+1].companyName;
-  //   console.log(this.cNames);
-    
-  // }
 }
 
 
@@ -78,9 +82,20 @@ ngOnInit() {
 
   this.obj.getClientData().subscribe((data:any)=>{
     this.client1=data;
-    console.log(this.client1);
-    
+    //console.log(this.client1);
+  
+    for(let i=0;i<this.client1.length;i++)
+    {
+      this.clientData[i]=this.client1[i].companyName;
+     //console.log(this.client1[i].companyName,"hiiii");
+      
+    }
+  
   })
+
+
+  //console.log(this.clientData,"akshay shinde");
+  
 
   this.pro.getProjectData().subscribe((data:any)=>{
     this.project1=data;
@@ -110,7 +125,7 @@ createProject(){
     if(this.project.id){
      this.project.clientName=this.selectedClient;
      this.project.annualYear=this.selectedYear;
-
+    this.project.activity=this.selectedActivity;
     //   this.obj.updateUser(this.user.id,this.user).subscribe((result)=>{
     //   window.location.reload();
     // })  
@@ -119,6 +134,7 @@ createProject(){
   {
      this.project.clientName=this.selectedClient;
      this.project.annualYear=this.selectedYear;
+     this.project.activity=this.selectedActivity;
 
       this.project.id = this.createId();
       //this.user.status=true;
@@ -135,6 +151,14 @@ createProject(){
 }   
 }
 
+onITRUpload(event:any) {
+  this.itr=event.files;
+  console.log(this.itr,"file upload");
+  // if(this.itr)
+  // {
+  //   this.tws1=true;
+  // }
+}
 
 createId(): string {
   let id = '';

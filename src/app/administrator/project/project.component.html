@@ -15,12 +15,11 @@
 
   
   
-  <!-- Dialog box to add Client -->
-  <p-dialog  [(visible)]="projectDialog" [style]="{width: '450px'}" header="User Details" [modal]="true" styleClass="p-fluid">
+  <!-- Dialog box to create project -->
+  <p-dialog  [(visible)]="projectDialog" [style]="{width: '450px'}" header="Project Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field" style="margin-bottom: 50px;">
-            <p-dropdown [options]=client1 [(ngModel)]="selectedClient" optionLabel="client" placeholder="select Client">
-              
+            <p-dropdown [options]=client1 [(ngModel)]="selectedClient" optionLabel='companyName' placeholder="select Client">
             </p-dropdown>
         </div>
                 
@@ -31,15 +30,21 @@
         </div>
     
         <br><br>
-        <div class="p-field">
+        <!-- <div class="p-field">
             <label for="email">Activity</label>
-            <input type="text" pInputText id="activity" [(ngModel)]="project.activity" required autofocus />
-            <!-- <small class="p-invalid" *ngIf="submitted && !user.email">Email-ID is required</small> -->
-        </div>
-        <br><br>
+            <input type="text" pInputText id="activity" {{project}} required autofocus />
+            
+        </div> -->
+
 
         <div class="p-field" style="margin-bottom: 50px;">
-            <p-dropdown [options]=years [(ngModel)]="selectedYear" [virtualScroll]="true"  optionLabel="client" placeholder="select year"></p-dropdown>
+          <p-dropdown [options]=activities [(ngModel)]="selectedActivity" optionLabel='activity' placeholder="select Activity">
+          </p-dropdown>
+      </div>
+
+
+        <div class="p-field" style="margin-bottom: 50px;">
+            <p-dropdown [options]=years [(ngModel)]="selectedYear" [virtualScroll]="true" optionLabel='year' placeholder="select year"></p-dropdown>
         </div>
 
         <div class="p-field">
@@ -94,6 +99,8 @@
         </th>
         <th pSortableColumn="precisionCode">PrecisionCode <p-sortIcon field="precisionCode"></p-sortIcon>
         </th>
+        <th pSortableColumn="precisionCode" style="text-align: center;">Action 
+        </th>
         
       </tr>
     </ng-template>
@@ -102,12 +109,12 @@
         <td>{{project1.id}}</td>
         <td>{{project1.clientName.companyName}}</td>
         <td>{{project1.projectName}}</td>
-        <td>{{project1.activity}}</td>
+        <td>{{project1.activity.activity}}</td>
         <td>{{project1.annualYear.year}}</td>
         <td>{{project1.precisionCode}}</td>
       <td>
         
-        <p-fileUpload mode="basic" accept=".xml" label="Upload" chooseLabel="Upload ITR6 file here"
+        <p-fileUpload  accept=".pdf" label="Upload" url="http://localhost:3000/file" (onUpload)="onITRUpload($event)" chooseLabel="Upload ITR6 file here"
           class="p-mr-2 p-d-inline-block"></p-fileUpload>
       
     </td>

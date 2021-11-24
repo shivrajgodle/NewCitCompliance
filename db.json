@@ -82,60 +82,6 @@
       "status": true
     },
     {
-      "companyName": "s",
-      "PAN": "s",
-      "groupCompany": "s",
-      "PrecisionId": "s",
-      "approver": "sa",
-      "id": "kILEd",
-      "status": true
-    },
-    {
-      "companyName": "s",
-      "PAN": "s",
-      "groupCompany": "s",
-      "PrecisionId": "s",
-      "approver": "s",
-      "id": "KCaxv",
-      "status": true
-    },
-    {
-      "companyName": "d",
-      "groupCompany": "dd",
-      "PrecisionId": "ddd",
-      "approver": "d",
-      "PAN": "d",
-      "id": "igC44",
-      "status": true
-    },
-    {
-      "companyName": "d",
-      "PAN": "dd",
-      "groupCompany": "sadX",
-      "PrecisionId": "D",
-      "approver": "D",
-      "id": "NeGlA",
-      "status": true
-    },
-    {
-      "companyName": "erw",
-      "PAN": "eew",
-      "groupCompany": "we",
-      "PrecisionId": "er",
-      "approver": "ewe",
-      "id": "kuY7c",
-      "status": true
-    },
-    {
-      "companyName": "sad",
-      "PAN": "sad",
-      "groupCompany": "d",
-      "PrecisionId": "ewe",
-      "approver": "wqe",
-      "id": "lknJg",
-      "status": true
-    },
-    {
       "companyName": "PMC bank",
       "PAN": "ASDSD3322E",
       "groupCompany": "PMC GLOBAL",
@@ -177,6 +123,15 @@
     },
     {
       "id": "eaMLPVy"
+    },
+    {
+      "id": "tuGInlu"
+    },
+    {
+      "id": "7QTEauY"
+    },
+    {
+      "id": "PBvwvtA"
     }
   ],
   "user": [
@@ -253,22 +208,24 @@
   ],
   "project": [
     {
-      "projectName": "sdsd",
-      "activity": "sd",
-      "precisionCode": "xdfdf",
+      "projectName": "Demo",
+      "precisionCode": "a11",
       "clientName": {
-        "companyName": "Lenovo india pvt ltd",
-        "PAN": "ASDSDE3456E",
-        "groupCompany": "Lenovo inc",
-        "PrecisionId": "ads22213",
-        "approver": "xyz@pwc.com",
-        "id": "9Hgnk",
-        "status": false
+        "companyName": "cyperts",
+        "PAN": "ASF123",
+        "groupCompany": "Anemoi",
+        "PrecisionId": "xsad23456",
+        "approver": "shiv@pwc.com",
+        "id": "muCkJ",
+        "status": true
       },
       "annualYear": {
-        "year": 1951
+        "year": 1985
       },
-      "id": "Rnn8p"
+      "activity": {
+        "activity": "Gross Return"
+      },
+      "id": "nUwhR"
     }
   ],
   "profile": {
