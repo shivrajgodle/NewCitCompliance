@@ -1,0 +1,123 @@
+<header>
+    <h3>Project Creation</h3>
+  </header>
+  
+  <div class="card">
+    <p-toolbar styleClass="p-mb-4">
+      <ng-template pTemplate="left">
+        <button pButton pRipple label="Create Project" icon="pi pi-plus" (click)="addProject()"
+          class="p-button-success p-mr-2"></button>
+      </ng-template>
+  
+    </p-toolbar>
+  </div>
+  
+
+  
+  
+  <!-- Dialog box to add Client -->
+  <p-dialog  [(visible)]="projectDialog" [style]="{width: '450px'}" header="User Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field" style="margin-bottom: 50px;">
+            <p-dropdown [options]=client1 [(ngModel)]="selectedClient" optionLabel="client" placeholder="select Client">
+              
+            </p-dropdown>
+        </div>
+                
+        <div class="p-field">
+            <label for="name">Project Name</label>
+            <input type="text" pInputText id="name" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="project.projectName" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !project.projectName">Project Name is required.</small>
+        </div>
+    
+        <br><br>
+        <div class="p-field">
+            <label for="email">Activity</label>
+            <input type="text" pInputText id="activity" [(ngModel)]="project.activity" required autofocus />
+            <!-- <small class="p-invalid" *ngIf="submitted && !user.email">Email-ID is required</small> -->
+        </div>
+        <br><br>
+
+        <div class="p-field" style="margin-bottom: 50px;">
+            <p-dropdown [options]=years [(ngModel)]="selectedYear" [virtualScroll]="true"  optionLabel="client" placeholder="select year"></p-dropdown>
+        </div>
+
+        <div class="p-field">
+            <label for="name">Precision Code</label>
+            <input type="text" pInputText id="pcode" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="project.precisionCode" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !project.precisionCode">Precision code is required.</small>
+        </div>
+
+        
+
+    </ng-template>
+    
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" style="float: left;" icon="pi pi-times" class="p-button-danger" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" style="float: right;" icon="pi pi-check" class="p-button-success" (click)="createProject()"></button>
+    </ng-template>
+  </p-dialog>
+  
+  
+  
+  
+  
+  <!-- Table to show client data -->
+  
+  <p-table #dt [value]="project1" [rows]="5" [paginator]="true"
+    [globalFilterFields]="['id','clientName','projectName','activity','annualYear','precisionCode']" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <h5 class="p-m-0">Manage User</h5>
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+            placeholder="Search..." />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+       
+  
+        <th pSortableColumn="id">Project ID <p-sortIcon field="id"></p-sortIcon>
+        </th>
+  
+        <th pSortableColumn="clientName"> Client Name <p-sortIcon field="clientName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="projectName">Project Name <p-sortIcon field="projectName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon>
+        </th>
+        <th pSortableColumn="annualYear">AnnualYear <p-sortIcon field="annualYear"></p-sortIcon>
+        </th>
+        <th pSortableColumn="precisionCode">PrecisionCode <p-sortIcon field="precisionCode"></p-sortIcon>
+        </th>
+        
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-project1>
+      <tr>
+        <td>{{project1.id}}</td>
+        <td>{{project1.clientName.companyName}}</td>
+        <td>{{project1.projectName}}</td>
+        <td>{{project1.activity}}</td>
+        <td>{{project1.annualYear.year}}</td>
+        <td>{{project1.precisionCode}}</td>
+      <td>
+        
+        <p-fileUpload mode="basic" accept=".xml" label="Upload" chooseLabel="Upload ITR6 file here"
+          class="p-mr-2 p-d-inline-block"></p-fileUpload>
+      
+    </td>
+    </tr>
+ 
+
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{project1 ? project1.length : 0 }} users.
+      </div>
+    </ng-template>
+  </p-table>

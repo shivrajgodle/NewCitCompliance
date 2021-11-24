@@ -1,0 +1,38 @@
+<h3 style="text-align: center;">Recommended documents for filing Gross basis return</h3>
+<br>
+<div style="text-align: center;">
+    <h4>26AS</h4>
+    <div *ngIf="tws1">
+        <button style="background-color: green; color: black; width: 50px; float: right; height: 100px;" disabled></button>
+    </div>
+
+    <p-fileUpload name="tws" url="http://localhost:3000/file" (onUpload)="onTwsUpload($event)" accept=".txt">
+    </p-fileUpload>
+   
+</div>
+
+<div style="text-align: center;">
+    <h4>Sales Registor</h4>
+    <div *ngIf="salesReg1">
+        <button style="background-color: green; color: black; width: 50px; float: right; height: 100px;" disabled></button>
+    </div>
+    
+    <p-fileUpload name="salesReg" url="http://localhost:3000/file" (onUpload)="onSrUpload($event)" accept=".xlsx">
+    </p-fileUpload>
+</div>
+
+<div style="text-align: center;">
+    <h4>Related Party Schedule</h4>
+    <div *ngIf="rpt1">
+        <button style="background-color: green; color: black; width: 50px; float: right; height: 100px;" disabled></button>
+    </div>
+    
+    <p-fileUpload name="rpt" url="http://localhost:3000/file" (onUpload)="onRptUpload($event)" accept=".xlsx">
+    </p-fileUpload>
+</div>
+
+<div>
+    <ng-template pTemplate="right">
+      
+      </ng-template>
+</div>
