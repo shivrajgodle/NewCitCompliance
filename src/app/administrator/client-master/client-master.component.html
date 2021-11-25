@@ -32,6 +32,10 @@
             <input type="text" pInputText id="PAN" pInputText pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" [(ngModel)]="client.PAN" required autofocus/>
         </div>
         <div class="p-field">
+          <label for="description">TAX collection Account Number(TAN)</label>
+          <input type="text" pInputText id="TAN" pInputText pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" [(ngModel)]="client.TAN" required autofocus/>
+      </div>
+        <div class="p-field">
           <label for="name">Group Company</label>
           <input type="text" pInputText id="group_company" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="client.groupCompany" required autofocus />
           <small class="p-invalid" *ngIf="submitted && !client.groupCompany">Group Company Name is required.</small>
@@ -91,11 +95,17 @@
         </th>
         <th pSortableColumn="PAN">Permenant Account Number (PAN) <p-sortIcon field="PAN"></p-sortIcon>
         </th>
+        <th pSortableColumn="TAN">Tax collection Account Number (PAN) <p-sortIcon field="TAN"></p-sortIcon>
+        </th>
         <th pSortableColumn="groupCompany">Group Company <p-sortIcon field="groupCompany"></p-sortIcon>
         </th>
         <th pSortableColumn="PrecisionId">Precision Id <p-sortIcon field="PrecisionId"></p-sortIcon>
         </th>
         <th pSortableColumn="approver">Approver <p-sortIcon field="approver"></p-sortIcon>
+        </th>
+        <th pSortableColumn="createdBy">Created By <p-sortIcon field="createdBy"></p-sortIcon>
+        </th>
+        <th pSortableColumn="createdOn">Created On <p-sortIcon field="createdOn"></p-sortIcon>
         </th>
         <th></th>
         <th>Action</th>
@@ -112,9 +122,12 @@
         <td>{{client1.id}}</td>
         <td>{{client1.companyName}}</td>
         <td>{{client1.PAN}}</td>
+        <td>{{client1.TAN}}</td>
         <td>{{client1.groupCompany}}</td>
         <td>{{client1.PrecisionId}}</td>
         <td>{{client1.approver}}</td>
+        <td>{{client1.createdBy}}</td>
+        <td>{{client1.createdOn | date:'EEE, dd-MMM yyyy'}}</td>
         <!-- <td>
           <p-tableCheckbox [value]="true"></p-tableCheckbox>
         </td> -->

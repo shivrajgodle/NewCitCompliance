@@ -78,6 +78,10 @@
         </th>
         <th pSortableColumn="role">Role <p-sortIcon field="role"></p-sortIcon>
         </th>
+        <th pSortableColumn="createdBy">Created By <p-sortIcon field="createdBy"></p-sortIcon>
+        </th>
+        <th pSortableColumn="createdOn">Created On <p-sortIcon field="createdOn"></p-sortIcon>
+        </th>
         <th>Action</th>
         
         <th pSortableColumn="status">Status 
@@ -93,6 +97,8 @@
         <td>{{user1.name}}</td>
         <td>{{user1.email}}</td>
         <td>{{user1.role.role}}</td>
+        <td>{{user1.createdBy}}</td>
+        <td>{{user1.createdOn | date:'EEE, dd-MMM yyyy'}}</td>
         <td>
           <p-button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editUser(user1)"></p-button>
         </td>

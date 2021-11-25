@@ -97,6 +97,9 @@ export class UserComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
+        this.user.createdBy="Admin";
+        this.user.createdOn=Date.now();
+
         Swal.fire('Saved!', '', 'success')
 
         //Logic for Update
@@ -118,6 +121,10 @@ export class UserComponent implements OnInit {
       this.user.role=this.selectedRole;
        this.user.id = this.createId();
        this.user.status=true;
+       this.user.createdBy="Admin";
+       this.user.createdOn=Date.now();
+
+
        this.user1.push(this.user);
        this.obj.postUser(this.user).subscribe((result)=>{
         this.messageService.add({severity:'success', summary:'Success', detail:'Client Created Successfully'});

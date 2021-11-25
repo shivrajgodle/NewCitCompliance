@@ -82,6 +82,9 @@ export class ClientMasterComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
+        this.client.createdBy="Admin";
+        this.client.createdOn=Date.now();
+
         Swal.fire('Saved!', '', 'success')
 
         //Logic for Update
@@ -105,6 +108,9 @@ export class ClientMasterComponent implements OnInit {
         //code for Saving New Client
          this.client.id = this.createId();
          this.client.status = this.checked1;
+          this.client.createdBy="Admin";
+          this.client.createdOn=Date.now();
+
          this.client1.push(this.client);
          this.cls.postClient(this.client).subscribe((result)=>{
         //  window.location.reload();

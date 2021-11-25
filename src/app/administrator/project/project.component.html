@@ -99,7 +99,7 @@
         </th>
         <th pSortableColumn="precisionCode">PrecisionCode <p-sortIcon field="precisionCode"></p-sortIcon>
         </th>
-        <th pSortableColumn="precisionCode" style="text-align: center;">Action 
+        <th style="text-align: center;">Action 
         </th>
         
       </tr>
@@ -114,7 +114,7 @@
         <td>{{project1.precisionCode}}</td>
       <td>
         
-        <p-fileUpload  accept=".pdf" label="Upload" url="http://localhost:3000/file" (onUpload)="onITRUpload($event)" chooseLabel="Upload ITR6 file here"
+        <p-fileUpload  accept=".pdf" label="Upload" url="http://localhost:3000/file" (onUpload)="onITRUpload($event,project1)" chooseLabel="Upload ITR6 file"
           class="p-mr-2 p-d-inline-block"></p-fileUpload>
       
     </td>
@@ -124,7 +124,7 @@
     </ng-template>
     <ng-template pTemplate="summary">
       <div class="p-d-flex p-ai-center p-jc-between">
-        In total there are {{project1 ? project1.length : 0 }} users.
+        In total there are {{project1 ? project1.length : 0 }} projects.
       </div>
     </ng-template>
   </p-table>

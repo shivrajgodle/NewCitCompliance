@@ -151,8 +151,10 @@ createProject(){
 }   
 }
 
-onITRUpload(event:any) {
+onITRUpload(event:any,project:Project) {
   this.itr=event.files;
+  console.log(project);
+  
   console.log(this.itr,"file upload");
   // if(this.itr)
   // {

@@ -6,6 +6,8 @@ export interface Client{
     PrecisionId?:string;
     approver?:string;
     status?:boolean;
-    
+    createdBy?:string;
+    createdOn?:number;
+    TAN?:string;
   }
   
