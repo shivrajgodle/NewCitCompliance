@@ -11,6 +11,13 @@ export class DocumentManagerComponent implements OnInit {
   srg?: File;
   rpt?: File;
 
+
+  tws1: boolean=false;
+  srg1: boolean=false;
+  rpt1: boolean=false;
+
+
+
   file:any;
 
   constructor() { }
@@ -19,33 +26,26 @@ export class DocumentManagerComponent implements OnInit {
   }
 
   myUploader(event:any) {
-    //event.files == files to upload
-
-    // this.tws = event.files;
-    // console.log(this.tws);
-
-    // console.log("yoyo");
-    
-    // console.log(event);
-    
     this.file = event.target.files[0];
     console.log(this.file);
-    
-    
-    
-    
+    this.tws1=true;
   }
 
   myUploader1(event:any) {
     //event.files == files to upload
     this.srg = event.files;
+    this.srg1=true; 
+    console.log(this.srg);
+    
 
     
   }
   myUploader2(event:any) {
     //event.files == files to upload
-    
     this.rpt = event.files;
+    this.rpt1=true;
+    console.log(this.rpt);
+    
   }
 
   

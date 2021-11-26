@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PrimeNGConfig} from 'primeng/api'
+import {MenuItem, PrimeNGConfig} from 'primeng/api'
+
+
 
 @Component({
   selector: 'app-homepage',
@@ -8,9 +10,27 @@ import {PrimeNGConfig} from 'primeng/api'
 })
 export class HomepageComponent implements OnInit {
 
+  items!: MenuItem[];
+
   ngOnInit() {
     this.primengConfig.ripple = false;
+
+    this.items = [
+      {
+          label: 'My Workspace',
+          icon: 'pi pi-pw pi-file',
+          items: [
+              {label: 'My Projects', routerLink:"/admin/project", icon: 'pi pi-fw pi-plus',},
+              {label: 'Document Manager', routerLink:"/admin/mydoc", icon: 'pi pi-fw pi-external-link'},
+              
+          ]
+      }
+    ]
+
+
+
   }
+
 
 
     visibleSidebar1:any;

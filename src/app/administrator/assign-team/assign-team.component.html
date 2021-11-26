@@ -1,0 +1,66 @@
+<br><br><br>
+<div>
+    <div>
+        <p-card fxFlext=100% fxLayout="row" fxLayoutAlign="center center" >
+            <ng-template pTemplate="header">
+              <h3>Gross Return</h3>
+            </ng-template>
+            <ng-template pTemplate="headerTemplate">
+                <h3>Project Name:{{data.projectName}}</h3>
+                <h3>Project Id:{{data.id}}</h3>
+                <h3>Client name:{{data.clientName.companyName}}</h3>
+                <h3>Client name:{{data.clientName.id}}</h3>
+                <h3>AY:{{data.annualYear.year}}</h3>
+                <h3>Start Date:{{data.clientName.createdOn | date:'EEE, dd-MMM yyyy'}}</h3>
+            </ng-template>
+            
+        </p-card>
+    </div>
+</div>
+<br><br><br>
+
+<div>
+    <!-- <p-table>
+      <ng-template pTemplate="header">
+        <tr>
+    
+          <th pSortableColumn="name">Name 
+          </th>
+    
+          <th pSortableColumn="emailId">Email Id 
+          </th>
+          <th pSortableColumn="role">Role
+          </th>
+          <th pSortableColumn="activity">Activity 
+          </th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-userData>
+        <tr>
+          <td><p-dropdown [options]=userData [(ngModel)]="selectedUser" [virtualScroll]="true" optionLabel='name' placeholder="select User"></p-dropdown></td>
+          <td>Akshay</td>
+          <td>Akshay</td>
+          <td>Akshay</td>
+        </tr>
+      </ng-template>
+    </p-table> -->
+    <table>
+            <tr>
+                
+                <th>Name</th>
+                &nbsp;&nbsp;&nbsp;                <th>Email Id </th>
+                &nbsp;&nbsp;&nbsp;<th>Role</th>
+                &nbsp;&nbsp;&nbsp;<th>Activity </th>
+            </tr>
+            <tr>
+                <td><p-dropdown [options]=userData  [(ngModel)]="selectedUser" [virtualScroll]="true" optionLabel='name' placeholder="select User"></p-dropdown></td>
+            &nbsp;&nbsp;&nbsp;    <td>shiv</td>
+            &nbsp;&nbsp;&nbsp;<td>shiv</td>
+            &nbsp;&nbsp;&nbsp;<td>shiv</td>
+                
+                
+            </tr>
+            
+    </table>
+    </div>            

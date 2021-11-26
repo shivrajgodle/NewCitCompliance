@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Client } from 'src/app/Modal/client';
 import { Project } from 'src/app/Modal/project';
 import { ClientServiceService } from 'src/app/Services/client-service.service';
@@ -55,7 +56,7 @@ itr:any;
 cNames:any;
 years:Year[];
 
-constructor(private obj:ClientServiceService, private pro:ProjectServiceService) {
+constructor(private obj:ClientServiceService, private pro:ProjectServiceService, private router:Router) {
   this.years=[];
   for(let i=1951;i<=2050;i++)
   {
@@ -84,12 +85,7 @@ ngOnInit() {
     this.client1=data;
     //console.log(this.client1);
   
-    for(let i=0;i<this.client1.length;i++)
-    {
-      this.clientData[i]=this.client1[i].companyName;
-     //console.log(this.client1[i].companyName,"hiiii");
-      
-    }
+    
   
   })
 
@@ -99,6 +95,9 @@ ngOnInit() {
 
   this.pro.getProjectData().subscribe((data:any)=>{
     this.project1=data;
+
+  
+
   })
 
 }
@@ -184,28 +183,12 @@ findIndexById(id:string)
   return index;
 }
 
-//Edit client information
-  // editUser(user:User){
-  // this.user={...user};
-  // this.submitted=false;
-  // this.userDialogue=true;
-  // console.log(user);
-  
-}
-
-//method for changing the status of user
-// changeStatus(user:User)
+// assignTeam(project:Project)
 // {
-
-//  this.user={...user};
-
-//    if(this.user.id)
-//    {        
-//      this.obj.updateUser(this.user.id,this.user).subscribe((result)=>{
-//      console.log("status"+result);
-//        }) 
-//    }
+//   this.router.navigateByUrl("/admin/team/{project.id}");
 // }
 
+
+}
 
 

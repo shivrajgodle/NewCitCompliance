@@ -94,7 +94,7 @@
         <th pSortableColumn="projectName">Project Name <p-sortIcon field="projectName"></p-sortIcon>
         </th>
         <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon>
-        </th>
+        </th> 
         <th pSortableColumn="annualYear">AnnualYear <p-sortIcon field="annualYear"></p-sortIcon>
         </th>
         <th pSortableColumn="precisionCode">PrecisionCode <p-sortIcon field="precisionCode"></p-sortIcon>
@@ -114,9 +114,7 @@
         <td>{{project1.precisionCode}}</td>
       <td>
         
-        <p-fileUpload  accept=".pdf" label="Upload" url="http://localhost:3000/file" (onUpload)="onITRUpload($event,project1)" chooseLabel="Upload ITR6 file"
-          class="p-mr-2 p-d-inline-block"></p-fileUpload>
-      
+        <p-button routerLink="/admin/team/{{project1.id}}">Assign team</p-button>
     </td>
     </tr>
  
@@ -128,3 +126,54 @@
       </div>
     </ng-template>
   </p-table>
+
+
+
+
+  <!-- card -->
+
+
+<!-- 
+   <div *ngFor="let project of project1">
+
+    <p-card>
+      <ng-template pTemplate="header">
+          <h3>Gross Return</h3>
+          {{project.clientName | json}}
+      </ng-template>
+      <div *ngFor="let data of project.clientName">
+      <ng-template pTemplate="title">
+        <h3>{{data.companyName | json }}</h3>
+
+    </ng-template>
+  </div>
+
+      <ng-template pTemplate="footer">
+          Footer content here
+      </ng-template>
+  </p-card>
+   </div> -->
+<!-- 
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex=25% fxFlex.xs=100% fxFlex.sm=50% fxFlex.md=50% >
+        <p-table [value]="project1">
+          <ng-template pTemplate="body" let-project1>
+            <p-card>
+              <ng-template pTemplate="header">
+                <h3>Gross Return</h3>
+              </ng-template>
+              <ng-template pTemplate="headerTemplate">
+                <h3>Client Name:{{project1.clientName.companyName}}</h3>
+              </ng-template>  
+              
+              <ng-template pTemplate="footer">
+                Footer content here
+              </ng-template>
+            </p-card>
+            <br>
+            <br><br>
+          </ng-template>
+        </p-table>
+      </div>
+    </div> -->
+  
