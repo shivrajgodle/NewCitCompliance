@@ -24,4 +24,9 @@ export class ProjectServiceService {
     return this.http.get(`${environment.api_url+"/project"}/${id}`);
       // return this.http.get('${environment.api_url+"/project"}/${id}');
   }
+
+  getTeamData()
+  {
+    return this.http.get(`${environment.api_url+"/team"}`);
+  }
 }

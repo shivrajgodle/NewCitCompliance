@@ -57,6 +57,182 @@
       "id": 2
     }
   ],
+  "team": [
+    [
+      {
+        "name": "Anudit",
+        "email": "anudit@pwc.com",
+        "role": {
+          "role": "Buisness Admin"
+        },
+        "id": "0wbkw",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810811850,
+        "projectId": "aZUHJ"
+      },
+      {
+        "name": "Shivraj",
+        "email": "shivraj@pwc.com",
+        "role": {
+          "role": "IT Admin"
+        },
+        "id": "ynT0p",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637811013610,
+        "projectId": "aZUHJ"
+      }
+    ],
+    [
+      {
+        "name": "Shivraj",
+        "email": "shivraj@pwc.com",
+        "role": {
+          "role": "IT Admin"
+        },
+        "id": "ynT0p",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637811013610,
+        "projectId": "aZUHJ"
+      },
+      {
+        "name": "Akshay",
+        "email": "akshay@pwc.com",
+        "role": {
+          "role": "Quality Manager"
+        },
+        "id": "u1pOU",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810759737,
+        "projectId": "aZUHJ"
+      }
+    ],
+    [
+      {
+        "name": "Anudit",
+        "email": "anudit@pwc.com",
+        "role": {
+          "role": "Buisness Admin"
+        },
+        "id": "0wbkw",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810811850,
+        "projectId": "aZUHJ"
+      },
+      {
+        "name": "Akshay",
+        "email": "akshay@pwc.com",
+        "role": {
+          "role": "Quality Manager"
+        },
+        "id": "u1pOU",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810759737,
+        "projectId": "aZUHJ"
+      }
+    ],
+    [
+      {
+        "name": "Anudit",
+        "email": "anudit@pwc.com",
+        "role": {
+          "role": "Buisness Admin"
+        },
+        "id": "0wbkw",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810811850,
+        "projectId": "aZUHJ"
+      }
+    ],
+    [
+      {
+        "name": "Anudit",
+        "email": "anudit@pwc.com",
+        "role": {
+          "role": "Buisness Admin"
+        },
+        "id": "0wbkw",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810811850,
+        "projectId": "nUwhR"
+      },
+      {
+        "name": "Shivraj",
+        "email": "shivraj@pwc.com",
+        "role": {
+          "role": "IT Admin"
+        },
+        "id": "ynT0p",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637811013610,
+        "projectId": "nUwhR"
+      }
+    ],
+    [
+      {
+        "name": "Anudit",
+        "email": "anudit@pwc.com",
+        "role": {
+          "role": "Buisness Admin"
+        },
+        "id": "0wbkw",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810811850,
+        "projectId": "nUwhR"
+      }
+    ],
+    [
+      {
+        "name": "Anudit",
+        "email": "anudit@pwc.com",
+        "role": {
+          "role": "Buisness Admin"
+        },
+        "id": "0wbkw",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810811850,
+        "projectId": "nUwhR"
+      }
+    ],
+    [
+      {
+        "name": "Anudit",
+        "email": "anudit@pwc.com",
+        "role": {
+          "role": "Buisness Admin"
+        },
+        "id": "0wbkw",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810811850,
+        "projectId": "nUwhR"
+      }
+    ],
+    [
+      {
+        "name": "Anudit",
+        "email": "anudit@pwc.com",
+        "role": {
+          "role": "Buisness Admin"
+        },
+        "id": "0wbkw",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810811850,
+        "projectId": "nUwhR"
+      }
+    ]
+  ],
   "user": [
     {
       "name": "Akshay",
@@ -167,10 +343,27 @@
       "id": "WE3MY"
     },
     {
-      "id": "okR-ctB"
-    },
-    {
-      "id": "lEO5row"
+      "projectName": "ITR filed",
+      "precisionCode": "asd12",
+      "clientName": {
+        "companyName": "Metamagic",
+        "PAN": "METAM9886T",
+        "TAN": "PANGS7777D",
+        "groupCompany": "Betamagic",
+        "PrecisionId": "al9d",
+        "approver": "shivraj@pwc.xom",
+        "id": "4ZjO0",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637811960630
+      },
+      "annualYear": {
+        "year": 1965
+      },
+      "activity": {
+        "activity": "Gross Return"
+      },
+      "id": "BBYRc"
     }
   ],
   "profile": {

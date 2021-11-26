@@ -23,11 +23,16 @@ export class UserServiceService {
   {
     return this.http.put(`${this.url}/${id}`,data);
   }
-  
-  getUserById(name:string)
+
+  getUserByName(name:any)
   {
-    
-    return this.http.get(`${environment.api_url+"/user"}/${name}`);
+    console.log("in user service",name.id);
+    return this.http.get(`${environment.api_url+"/user"}/${name.id}`);
+  }
+
+  saveTeam(teamData:any)
+  {
+    return this.http.post(`${environment.api_url+"/team"}`,teamData);
   }
 
   

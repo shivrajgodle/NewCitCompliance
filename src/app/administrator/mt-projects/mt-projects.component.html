@@ -1,7 +1,6 @@
 <header>
     <h3>Project Creation</h3>
   </header>
-  
   <div class="card">
     <p-toolbar styleClass="p-mb-4">
       <ng-template pTemplate="left">
@@ -11,7 +10,7 @@
   
     </p-toolbar>
   </div>
-  
+ 
 
   
   
@@ -30,12 +29,7 @@
         </div>
     
         <br><br>
-        <!-- <div class="p-field">
-            <label for="email">Activity</label>
-            <input type="text" pInputText id="activity" {{project}} required autofocus />
-            
-        </div> -->
-
+    
 
         <div class="p-field" style="margin-bottom: 50px;">
           <p-dropdown [options]=activities [(ngModel)]="selectedActivity" optionLabel='activity' placeholder="select Activity">
@@ -99,7 +93,8 @@
         </th>
         <th pSortableColumn="precisionCode">PrecisionCode <p-sortIcon field="precisionCode"></p-sortIcon>
         </th>
-       
+        <th style="text-align: center;">Action 
+        </th>
         
       </tr>
     </ng-template>
@@ -111,7 +106,10 @@
         <td>{{project1.activity.activity}}</td>
         <td>{{project1.annualYear.year}}</td>
         <td>{{project1.precisionCode}}</td>
-     
+      <td>
+        
+        <p-button routerLink="/admin/team/{{project1.id}}">Assign team</p-button>
+    </td>
     </tr>
  
 
@@ -123,53 +121,3 @@
     </ng-template>
   </p-table>
 
-
-
-
-  <!-- card -->
-
-
-<!-- 
-   <div *ngFor="let project of project1">
-
-    <p-card>
-      <ng-template pTemplate="header">
-          <h3>Gross Return</h3>
-          {{project.clientName | json}}
-      </ng-template>
-      <div *ngFor="let data of project.clientName">
-      <ng-template pTemplate="title">
-        <h3>{{data.companyName | json }}</h3>
-
-    </ng-template>
-  </div>
-
-      <ng-template pTemplate="footer">
-          Footer content here
-      </ng-template>
-  </p-card>
-   </div> -->
-<!-- 
-    <div fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div fxFlex=25% fxFlex.xs=100% fxFlex.sm=50% fxFlex.md=50% >
-        <p-table [value]="project1">
-          <ng-template pTemplate="body" let-project1>
-            <p-card>
-              <ng-template pTemplate="header">
-                <h3>Gross Return</h3>
-              </ng-template>
-              <ng-template pTemplate="headerTemplate">
-                <h3>Client Name:{{project1.clientName.companyName}}</h3>
-              </ng-template>  
-              
-              <ng-template pTemplate="footer">
-                Footer content here
-              </ng-template>
-            </p-card>
-            <br>
-            <br><br>
-          </ng-template>
-        </p-table>
-      </div>
-    </div> -->
-  

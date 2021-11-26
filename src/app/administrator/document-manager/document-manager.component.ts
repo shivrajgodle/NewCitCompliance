@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectServiceService } from 'src/app/Services/project-service.service';
 
 @Component({
   selector: 'app-document-manager',
@@ -16,13 +17,37 @@ export class DocumentManagerComponent implements OnInit {
   srg1: boolean=false;
   rpt1: boolean=false;
 
+  data:any[]=[];
 
+  projectIdData:string[]=[];
 
+  finalProjId!:string;
   file:any;
 
-  constructor() { }
+  constructor(private pro:ProjectServiceService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+    
+    this.pro.getTeamData().subscribe((result:any)=>{
+        this.data=result;
+        console.log("yoyo",this.data);
+        
+      })
+ 
+  }
+
+  check(){
+    for(let i=0;i<this.data.length;i++){
+      console.log("hello i am in check");
+      console.log("hhhhhhh",this.data[i].projectId);
+      
+    }
+
+    
+
+    
+    
   }
 
   myUploader(event:any) {

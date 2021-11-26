@@ -1,10 +1,11 @@
-import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/Modal/client';
 import { Project } from 'src/app/Modal/project';
 import { ClientServiceService } from 'src/app/Services/client-service.service';
 import { ProjectServiceService } from 'src/app/Services/project-service.service';
+
 
 interface Year{
   year:number;
@@ -14,16 +15,15 @@ interface Activity{
   activity:string;
 }
 
+
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.css']
+  selector: 'app-mt-projects',
+  templateUrl: './mt-projects.component.html',
+  styleUrls: ['./mt-projects.component.css']
 })
-export class ProjectComponent implements OnInit {
+export class MtProjectsComponent implements OnInit {
 
-
-
-
+ 
 
  //for activation part
 //  checked1: boolean = false;
@@ -74,13 +74,14 @@ constructor(private obj:ClientServiceService, private pro:ProjectServiceService,
 
 
 ngOnInit() {
- this.obj.getClientData().subscribe((data:any)=>{
-    this.client1=data;
+  this.obj.getClientData().subscribe((data:any)=>{
+    this.client1=data;  
   })
+
 
   this.pro.getProjectData().subscribe((data:any)=>{
     this.project1=data;
-})
+  })
 
 }
 
@@ -115,7 +116,7 @@ createProject(){
      this.project.activity=this.selectedActivity;
 
       this.project.id = this.createId();
-      this.pro.createProject(this.project).subscribe((result)=>{
+     this.pro.createProject(this.project).subscribe((result)=>{
               window.location.reload();
       })
   }
@@ -132,7 +133,8 @@ onITRUpload(event:any,project:Project) {
   console.log(project);
   
   console.log(this.itr,"file upload");
- }
+  
+}
 
 createId(): string {
   let id = '';
@@ -155,7 +157,4 @@ findIndexById(id:string)
   }
   return index;
 }
-
 }
-
-

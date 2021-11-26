@@ -25,6 +25,7 @@ import {CardModule} from 'primeng/card';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {MenuItem} from 'primeng/api';
 import { AssignTeamComponent } from './assign-team/assign-team.component';
+import { MtProjectsComponent } from './mt-projects/mt-projects.component';
 
 
 
@@ -34,7 +35,8 @@ import { AssignTeamComponent } from './assign-team/assign-team.component';
     UserComponent,
     DocumentManagerComponent,
     ProjectComponent,
-    AssignTeamComponent
+    AssignTeamComponent,
+    MtProjectsComponent
   ],
   imports: [
     CommonModule,

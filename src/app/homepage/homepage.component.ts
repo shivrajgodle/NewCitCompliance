@@ -14,26 +14,11 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     this.primengConfig.ripple = false;
-
-    this.items = [
-      {
-          label: 'My Workspace',
-          icon: 'pi pi-pw pi-file',
-          items: [
-              {label: 'My Projects', routerLink:"/admin/project", icon: 'pi pi-fw pi-plus',},
-              {label: 'Document Manager', routerLink:"/admin/mydoc", icon: 'pi pi-fw pi-external-link'},
-              
-          ]
-      }
-    ]
-
-
-
   }
 
 
 
-    visibleSidebar1:any;
+    visibleSidebar1!:boolean;
 
 
     constructor(private primengConfig: PrimeNGConfig) {}
