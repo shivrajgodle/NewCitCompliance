@@ -18,7 +18,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FlexLayoutModule } from '@angular/flex-layout';
 import {TableModule} from 'primeng/table';
-
+import {PanelMenuModule} from 'primeng/panelmenu';
+import {MenuItem} from 'primeng/api';
 import {ToggleButtonModule} from 'primeng/togglebutton';
 
 @NgModule({
@@ -42,7 +43,8 @@ import {ToggleButtonModule} from 'primeng/togglebutton';
     TableModule,
     ToggleButtonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PanelMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

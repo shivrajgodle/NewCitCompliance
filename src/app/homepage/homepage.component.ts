@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PrimeNGConfig} from 'primeng/api'
+import {MenuItem, PrimeNGConfig} from 'primeng/api'
+
+
 
 @Component({
   selector: 'app-homepage',
@@ -8,12 +10,15 @@ import {PrimeNGConfig} from 'primeng/api'
 })
 export class HomepageComponent implements OnInit {
 
+  items!: MenuItem[];
+
   ngOnInit() {
     this.primengConfig.ripple = false;
   }
 
 
-    visibleSidebar1:any;
+
+    visibleSidebar1!:boolean;
 
 
     constructor(private primengConfig: PrimeNGConfig) {}

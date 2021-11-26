@@ -1,12 +1,10 @@
 <br>
     <br>
     <br>
-
-<p-table  responsiveLayout="scroll">
-    <br>
-    <br>
-    <br>
-    <ng-template pTemplate="header">
+<div style="text-align: center; font-weight: bolder;">
+<p-table  responsiveLayout="scroll" >
+    <ng-template pTemplate="header" >
+        
         <tr>
             <th>ProjectID</th>
             <th>Document Tag</th>
@@ -18,7 +16,7 @@
 
         
         <tr>
-            <td>as123</td>
+            <td>{{finalProjId}}</td>
             <td>26AS</td>
             <td>txt</td>
             <td>Not Uploaded</td>
@@ -30,29 +28,27 @@
             </td>
             <td><p-button  label="validate" (click)="validate()"></p-button></td>
 
-            <td></td>
-            
         </tr>
 
         <tr>
-            <td>as212</td>
+            <td>{{finalProjId}}</td>
             <td>Sales Register</td>
-            <td>xlsx</td>
-            <td>Not Uploaded</td>
+            <td>xlsx</td>          
+            <td *ngIf="!srg1">Not Uploaded</td>
+            <td *ngIf="srg1">Uploaded</td>
+        
             <!-- <td><p-fileUpload mode="basic" name="myfile[]" url="http://localhost:3000/client" (onUpload)="myUploader($event)" accept=".txt">
             </p-fileUpload></td> -->
 
             <td>
-                <p-fileUpload name="myfile" label="Upload" url="http://localhost:3000/file"  (uploadHandler)="myUploader1($event)" accept=".xlsx"></p-fileUpload>
+                <p-fileUpload name="myfile" label="Upload" url="http://localhost:3000/file"  (onUpload)="myUploader1($event)" accept=".xlsx"></p-fileUpload>
             </td>
             <td><p-button  label="validate" (click)="validate()"></p-button></td>
 
-            <td></td>
-            
         </tr>
 
         <tr>
-            <td>as212</td>
+            <td>{{finalProjId}}</td>
             <td>RPT</td>
             <td>xlsx</td>
             <td>Not Uploaded</td>
@@ -60,12 +56,12 @@
             </p-fileUpload></td> -->
 
             <td>
-                <p-fileUpload name="myfile" label="Upload" url="http://localhost:3000/file"  (uploadHandler)="myUploader2($event)" accept=".pdf"></p-fileUpload>
+                <p-fileUpload name="myfile" label="Upload" url="http://localhost:3000/file"  (onUpload)="myUploader2($event)" accept=".pdf"></p-fileUpload>
             </td>
             <td><p-button  label="validate" (click)="validate()"></p-button></td>
 
-            <td></td>
             
         </tr>
     </ng-template>
 </p-table>
+</div>

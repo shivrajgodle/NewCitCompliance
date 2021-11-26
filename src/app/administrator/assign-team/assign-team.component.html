@@ -1,0 +1,70 @@
+<br><br><br>
+<div>
+    <div>
+        <p-card >
+            <ng-template pTemplate="header">
+              <h3>Gross Return</h3>
+            </ng-template>
+            <ng-template pTemplate="headerTemplate">
+                <h3>Project Name:{{data.projectName}}</h3>
+                <h3>Project Id:{{data.id}}</h3>
+                <h3>Client name:{{data.clientName.companyName}}</h3>
+                <h3>Client name:{{data.clientName.id}}</h3>
+                <h3>AY:{{data.annualYear.year}}</h3>
+                <h3>Start Date:{{data.clientName.createdOn | date:'EEE, dd-MMM yyyy'}}</h3>
+            </ng-template>
+            
+        </p-card>
+    </div>
+</div>
+<br>
+
+<div>
+  <p-table #dt [value]="teamData"
+    [globalFilterFields]="['Name','Email-ID','Role','Activity']" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <h5 class="p-m-0">Manage Team</h5>
+        <span class="p-input-icon-left">
+          <p-dropdown [options]=userData [(ngModel)]="selectedUser" optionLabel='name' placeholder="select User">
+          </p-dropdown>
+    &nbsp;      <p-button (click)="addMember()">ADD</p-button>
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+  
+        </th>
+  
+        <th pSortableColumn="name">Name 
+        </th>
+  
+        <th pSortableColumn="email_id">Email_Id 
+        </th>
+        <th pSortableColumn="role">Role 
+        </th>
+        <th pSortableColumn="activity">Activity
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-teamData>
+      <tr>
+        <td>
+  
+        </td>
+        <td>{{teamData.name }}</td>
+        <td>{{teamData.email }}</td>
+        <td>{{teamData.role.role }}</td>
+        <td>{{"Gross Return"}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  </div>  
+  <br>
+  <div *ngIf="button">
+  <p-button style="text-align: center;" (click)=saveTeam()>Save </p-button>
+&nbsp;&nbsp;&nbsp;  <p-button style="text-align: center;" (click)=docUpload()>Next Step </p-button>
+</div>

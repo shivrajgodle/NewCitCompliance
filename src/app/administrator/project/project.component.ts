@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Client } from 'src/app/Modal/client';
 import { Project } from 'src/app/Modal/project';
 import { ClientServiceService } from 'src/app/Services/client-service.service';
@@ -55,7 +56,7 @@ itr:any;
 cNames:any;
 years:Year[];
 
-constructor(private obj:ClientServiceService, private pro:ProjectServiceService) {
+constructor(private obj:ClientServiceService, private pro:ProjectServiceService, private router:Router) {
   this.years=[];
   for(let i=1951;i<=2050;i++)
   {
@@ -73,33 +74,13 @@ constructor(private obj:ClientServiceService, private pro:ProjectServiceService)
 
 
 ngOnInit() {
-
-  //fetching data from service method and display all data here...
-
-  // this.obj.getUserData().subscribe((result:any)=>{
-  //   this.user1 = result;
-  // })
-
-  this.obj.getClientData().subscribe((data:any)=>{
+ this.obj.getClientData().subscribe((data:any)=>{
     this.client1=data;
-    //console.log(this.client1);
-  
-    for(let i=0;i<this.client1.length;i++)
-    {
-      this.clientData[i]=this.client1[i].companyName;
-     //console.log(this.client1[i].companyName,"hiiii");
-      
-    }
-  
   })
-
-
-  //console.log(this.clientData,"akshay shinde");
-  
 
   this.pro.getProjectData().subscribe((data:any)=>{
     this.project1=data;
-  })
+})
 
 }
 
@@ -126,9 +107,6 @@ createProject(){
      this.project.clientName=this.selectedClient;
      this.project.annualYear=this.selectedYear;
     this.project.activity=this.selectedActivity;
-    //   this.obj.updateUser(this.user.id,this.user).subscribe((result)=>{
-    //   window.location.reload();
-    // })  
   }
   else 
   {
@@ -137,8 +115,6 @@ createProject(){
      this.project.activity=this.selectedActivity;
 
       this.project.id = this.createId();
-      //this.user.status=true;
-      //this.project.push(this.user);
       this.pro.createProject(this.project).subscribe((result)=>{
               window.location.reload();
       })
@@ -156,11 +132,7 @@ onITRUpload(event:any,project:Project) {
   console.log(project);
   
   console.log(this.itr,"file upload");
-  // if(this.itr)
-  // {
-  //   this.tws1=true;
-  // }
-}
+ }
 
 createId(): string {
   let id = '';
@@ -184,28 +156,6 @@ findIndexById(id:string)
   return index;
 }
 
-//Edit client information
-  // editUser(user:User){
-  // this.user={...user};
-  // this.submitted=false;
-  // this.userDialogue=true;
-  // console.log(user);
-  
 }
-
-//method for changing the status of user
-// changeStatus(user:User)
-// {
-
-//  this.user={...user};
-
-//    if(this.user.id)
-//    {        
-//      this.obj.updateUser(this.user.id,this.user).subscribe((result)=>{
-//      console.log("status"+result);
-//        }) 
-//    }
-// }
-
 
 

@@ -68,7 +68,7 @@
   
   
   <!-- Table to show client data -->
-  
+  <div>
   <p-table #dt [value]="client1" [rows]="10" [paginator]="true"
     [globalFilterFields]="['companyName','PAN','groupCompany','approver']" [rowHover]="true" dataKey="id"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
@@ -95,7 +95,7 @@
         </th>
         <th pSortableColumn="PAN">Permenant Account Number (PAN) <p-sortIcon field="PAN"></p-sortIcon>
         </th>
-        <th pSortableColumn="TAN">Tax collection Account Number (PAN) <p-sortIcon field="TAN"></p-sortIcon>
+        <th pSortableColumn="TAN">Tax collection Account Number (TAN) <p-sortIcon field="TAN"></p-sortIcon>
         </th>
         <th pSortableColumn="groupCompany">Group Company <p-sortIcon field="groupCompany"></p-sortIcon>
         </th>
@@ -151,3 +151,4 @@
       </div>
     </ng-template>
   </p-table>
+  </div>

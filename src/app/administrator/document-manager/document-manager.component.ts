@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectServiceService } from 'src/app/Services/project-service.service';
 
 @Component({
   selector: 'app-document-manager',
@@ -11,41 +12,65 @@ export class DocumentManagerComponent implements OnInit {
   srg?: File;
   rpt?: File;
 
+
+  tws1: boolean=false;
+  srg1: boolean=false;
+  rpt1: boolean=false;
+
+  data:any[]=[];
+
+  projectIdData:string[]=[];
+
+  finalProjId!:string;
   file:any;
 
-  constructor() { }
+  constructor(private pro:ProjectServiceService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+    
+    this.pro.getTeamData().subscribe((result:any)=>{
+        this.data=result;
+        console.log("yoyo",this.data);
+        
+      })
+ 
+  }
+
+  check(){
+    for(let i=0;i<this.data.length;i++){
+      console.log("hello i am in check");
+      console.log("hhhhhhh",this.data[i].projectId);
+      
+    }
+
+    
+
+    
+    
   }
 
   myUploader(event:any) {
-    //event.files == files to upload
-
-    // this.tws = event.files;
-    // console.log(this.tws);
-
-    // console.log("yoyo");
-    
-    // console.log(event);
-    
     this.file = event.target.files[0];
     console.log(this.file);
-    
-    
-    
-    
+    this.tws1=true;
   }
 
   myUploader1(event:any) {
     //event.files == files to upload
     this.srg = event.files;
+    this.srg1=true; 
+    console.log(this.srg);
+    
 
     
   }
   myUploader2(event:any) {
     //event.files == files to upload
-    
     this.rpt = event.files;
+    this.rpt1=true;
+    console.log(this.rpt);
+    
   }
 
   

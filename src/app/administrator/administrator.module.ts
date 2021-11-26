@@ -19,6 +19,14 @@ import { UserComponent } from './user/user.component';
 import {DropdownModule} from 'primeng/dropdown';
 import { DocumentManagerComponent } from './document-manager/document-manager.component';
 import { ProjectComponent } from './project/project.component';
+import { AngularFileUploaderModule } from "angular-file-uploader";
+import {CardModule} from 'primeng/card';
+
+import {PanelMenuModule} from 'primeng/panelmenu';
+import {MenuItem} from 'primeng/api';
+import { AssignTeamComponent } from './assign-team/assign-team.component';
+import { MtProjectsComponent } from './mt-projects/mt-projects.component';
+
 
 
 @NgModule({
@@ -26,7 +34,9 @@ import { ProjectComponent } from './project/project.component';
     ClientMasterComponent,
     UserComponent,
     DocumentManagerComponent,
-    ProjectComponent
+    ProjectComponent,
+    AssignTeamComponent,
+    MtProjectsComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +56,10 @@ import { ProjectComponent } from './project/project.component';
     TableModule,
     ReactiveFormsModule,
     ToggleButtonModule,
-    DropdownModule    
+    DropdownModule,
+    AngularFileUploaderModule,
+    PanelMenuModule, 
+    CardModule   
   ]
 })
 export class AdministratorModule { }

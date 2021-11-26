@@ -21,6 +21,6 @@ p-table {
   td:nth-child(3) { background: hsl(170, 70%, 50%); }
   td:nth-child(4) { background: hsl(180, 80%, 50%); }
   td:nth-child(5) { background: hsl(192, 25%, 45%); }
-  td:nth-child(6) { background: hsl(210, 1%, 49%); }
+  td:nth-child(6) { background: hsl(210, 33%, 99%); }
   
   

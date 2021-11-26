@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AssignTeamComponent } from './assign-team/assign-team.component';
 import { ClientMasterComponent } from './client-master/client-master.component';
 import { DocumentManagerComponent } from './document-manager/document-manager.component';
+import { MtProjectsComponent } from './mt-projects/mt-projects.component';
 import { ProjectComponent } from './project/project.component';
 import { UserComponent } from './user/user.component';
 
@@ -22,6 +24,14 @@ const routes: Routes = [
   {
     path:"project",
     component:ProjectComponent
+  },
+  {
+    path:"team/:id",
+    component:AssignTeamComponent
+  },
+  {
+    path:"myprojects",
+    component:MtProjectsComponent
   }
 ];
 
