@@ -1,11 +1,11 @@
 <br><br><br>
 <div>
-    <div>
+    <div >
         <p-card >
-            <ng-template pTemplate="header">
+            <ng-template pTemplate="title">
               <h3>Gross Return</h3>
             </ng-template>
-            <ng-template pTemplate="headerTemplate">
+            <ng-template pTemplate="titleTemplate">
                 <h3>Project Name:{{data.projectName}}</h3>
                 <h3>Project Id:{{data.id}}</h3>
                 <h3>Client name:{{data.clientName.companyName}}</h3>
@@ -29,7 +29,7 @@
         <span class="p-input-icon-left">
           <p-dropdown [options]=userData [(ngModel)]="selectedUser" optionLabel='name' placeholder="select User">
           </p-dropdown>
-    &nbsp;      <p-button (click)="addMember()">ADD</p-button>
+    &nbsp;      <p-button *ngIf="selectedUser" (click)="addMember()">ADD</p-button>
         </span>
       </div>
     </ng-template>
@@ -64,7 +64,7 @@
   </p-table>
   </div>  
   <br>
-  <div *ngIf="button">
+  <div *ngIf="addButton">
   <p-button style="text-align: center;" (click)=saveTeam()>Save </p-button>
-&nbsp;&nbsp;&nbsp;  <p-button style="text-align: center;" (click)=docUpload()>Next Step </p-button>
+&nbsp;&nbsp;&nbsp;  <p-button *ngIf="saveButton" style="text-align: center;" (click)=docUpload()>Next Step </p-button>
 </div>

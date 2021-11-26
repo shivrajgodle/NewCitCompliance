@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Team } from 'src/app/Modal/team';
 import { User } from 'src/app/Modal/user';
 import { ProjectServiceService } from 'src/app/Services/project-service.service';
@@ -8,7 +9,8 @@ import { UserServiceService } from 'src/app/Services/user-service.service';
 @Component({
   selector: 'app-assign-team',
   templateUrl: './assign-team.component.html',
-  styleUrls: ['./assign-team.component.css']
+  styleUrls: ['./assign-team.component.css'],
+  providers: [MessageService]  
 })
 export class AssignTeamComponent implements OnInit {
 
@@ -16,15 +18,17 @@ export class AssignTeamComponent implements OnInit {
   data:any;
   teamData:Team[]=[];
   userData:User[]=[];
-  selectedUser:any[]=[];
+  selectedUser:any;
   singleUser:any;
 
-  button:boolean=false;
 
+
+  addButton:boolean=false;
+  saveButton:boolean=false;
   
 
 
-  constructor(private router:ActivatedRoute,private route:Router, private pro:ProjectServiceService, private obj:UserServiceService ) { }
+  constructor(private router:ActivatedRoute,private route:Router, private pro:ProjectServiceService, private obj:UserServiceService,private messageService: MessageService ) { }
 
   ngOnInit(): void {
     
@@ -41,42 +45,42 @@ export class AssignTeamComponent implements OnInit {
 
     this.obj.getUserData().subscribe((result:any)=>{
       this.userData=result;
-      console.log(this.userData,"user data fetched");
     })
   }
 
   addMember()
   {
-    this.button=true;
-    console.log(this.selectedUser,"aksksksksk");
- 
+    this.addButton=true;
+    //this.teamData.projectId=this.data.id;
     this.obj.getUserByName(this.selectedUser).subscribe((result:any)=>{
-      this.teamData.push(result);
-      for(let i=0;i<this.teamData.length;i++)
-      {
-        this.teamData[i].projectId=this.data.id;
-      }
-    })
+         this.teamData.push(result);
 
-    localStorage.setItem('projId',this.data.id);
+     })
   }
 
 
   saveTeam(){
-    //this.teamData = this.teamData.concat(this.data);
 
-//    this.teamData.push(this.data);
-
-    this.teamData.join(this.data.id);
+    localStorage.setItem("pid",this.data.id);
+    this.saveButton=true;
+    //to save project ID in team data
+    for(let i=0;i<this.teamData.length;i++)
+    {
+      this.teamData[i].projectId=this.data.id;
+    }
+  
+    //this.teamData.push("projectId":this.data.id);
 
     this.obj.saveTeam(this.teamData).subscribe((result:any)=>{
-      console.log("team data saved",result);
-      //this.route.navigateByUrl("/admin/mydoc");
+      
+      //nothing happen
       })  
+      this.messageService.add({severity:'success', summary:'Success', detail:'Team saved Successfully'});
   }
 
 
   docUpload(){
+    localStorage.setItem("pid",this.data.id)
        this.route.navigateByUrl("/admin/mydoc");
   }
 }

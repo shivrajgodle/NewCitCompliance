@@ -25,7 +25,7 @@
         <div class="p-field">
             <label for="name">Company Name</label>
             <input type="text" pInputText id="name" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="client.companyName" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !client.companyName">Company Name is required.</small>
+            <small class="p-invalid" style="color: red;"*ngIf="submitted && !client.companyName">Company Name is required.</small>
         </div>
         <div class="p-field">
             <label for="description">Permenant Account Number(PAN)</label>
@@ -38,18 +38,18 @@
         <div class="p-field">
           <label for="name">Group Company</label>
           <input type="text" pInputText id="group_company" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="client.groupCompany" required autofocus />
-          <small class="p-invalid" *ngIf="submitted && !client.groupCompany">Group Company Name is required.</small>
+          <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.groupCompany">Group Company Name is required.</small>
       </div>
       <div class="p-field">
         <label for="name">Precision ID</label>
         <input type="text" pInputText id="precision ID" pattern="[a-zA-Z 0-9]{2,10}" [(ngModel)]="client.PrecisionId" required autofocus />
-        <small class="p-invalid" *ngIf="submitted && !client.PrecisionId">Precision ID is required.</small>
+        <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.PrecisionId">Precision ID is required.</small>
     </div>
   
     <div class="p-field">
       <label for="name">Approver</label>
       <input type="text" pInputText id="approver"   pattern="^[A-Za-z0-9._%+-]+@pwc.com$" [(ngModel)]="client.approver" required autofocus />
-      <small class="p-invalid" *ngIf="submitted && !client.approver">Approver Name is required.</small>
+      <small class="p-invalid" style="color: red;" *ngIf="submitted && !client.approver">Approver Name is required.</small>
   </div>
   
   

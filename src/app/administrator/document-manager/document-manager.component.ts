@@ -19,10 +19,17 @@ export class DocumentManagerComponent implements OnInit {
 
   data:any[]=[];
 
+  pid!:any;
+  
   projectIdData:string[]=[];
 
   finalProjId!:string;
   file:any;
+
+
+  file26ASName!:string;
+  fileSRName!:string;
+  fileRPTName!:string;
 
   constructor(private pro:ProjectServiceService) { }
 
@@ -31,33 +38,49 @@ export class DocumentManagerComponent implements OnInit {
     
     this.pro.getTeamData().subscribe((result:any)=>{
         this.data=result;
-        console.log("yoyo",this.data);
+        // console.log("yoyo",this.data);
         
+        // for(let i=0;i<this.data.length;i++){
+        //   console.log(this.data[i].data[i].id);
+        //   if(localStorage.getItem("projId")===this.data[i].id)  
+        //   {
+        //     console.log(this.data[i].pid,"akkiiii");
+            
+        //   }
+        // }
       })
- 
-  }
-
-  check(){
-    for(let i=0;i<this.data.length;i++){
-      console.log("hello i am in check");
-      console.log("hhhhhhh",this.data[i].projectId);
       
-    }
+      this.pid=localStorage.getItem("pid");
+      console.log(this.pid);
+      
+     //localStorage.clear();
 
-    
-
-    
-    
+     console.log(this.pid);
+     
+      
   }
 
   myUploader(event:any) {
-    this.file = event.target.files[0];
-    console.log(this.file);
+    console.log(event.files);
+    for(let i=0;i<event.files.length;i++)
+    {
+      console.log(event.files[i].name);
+      this.file26ASName=event.files[i].name;          
+    }
+    
+    this.file = event.files;
+
     this.tws1=true;
   }
 
   myUploader1(event:any) {
     //event.files == files to upload
+    for(let i=0;i<event.files.length;i++)
+    {
+      console.log(event.files[i].name);
+      this.fileSRName=event.files[i].name;          
+    }
+
     this.srg = event.files;
     this.srg1=true; 
     console.log(this.srg);
@@ -67,6 +90,12 @@ export class DocumentManagerComponent implements OnInit {
   }
   myUploader2(event:any) {
     //event.files == files to upload
+    for(let i=0;i<event.files.length;i++)
+    {
+      console.log(event.files[i].name);
+      this.fileRPTName=event.files[i].name;          
+    }
+
     this.rpt = event.files;
     this.rpt1=true;
     console.log(this.rpt);
@@ -84,4 +113,8 @@ export class DocumentManagerComponent implements OnInit {
 }
 
 
+
+function check() {
+  throw new Error('Function not implemented.');
+}
 

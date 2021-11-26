@@ -86,7 +86,11 @@ ngOnInit() {
 }
 
 
-
+onSelect(){
+  this.obj.getClientByName(this.selectedClient).subscribe((data:any)=>{
+    this.project1=data;
+  })
+}
 
 //to open dialog box
 addProject(){
