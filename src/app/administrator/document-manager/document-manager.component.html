@@ -6,7 +6,6 @@
     <ng-template pTemplate="header" >
         
         <tr>
-            <th>ProjectID</th>
             <th>Document Tag</th>
             <th>Documnet Type</th>
             <th>Status</th>
@@ -16,22 +15,23 @@
 
         
         <tr>
-            <td>{{finalProjId}}</td>
             <td>26AS</td>
             <td>txt</td>
-            <td>Not Uploaded</td>
+            <td *ngIf="!tws1">Not Uploaded</td>
+            <td *ngIf="tws1">Uploaded</td>
+        
             <!-- <td><p-fileUpload mode="basic" name="myfile[]" url="http://localhost:3000/client" (onUpload)="myUploader($event)" accept=".txt">
             </p-fileUpload></td> -->
 
             <td>
-                <p-fileUpload name="myfile" label="Upload" label="Upload" url="http://localhost:3000/file"  (onUpload)="myUploader($event)" accept=".txt"></p-fileUpload>
+                <p-fileUpload mode="basic" name="myfile" label="Upload" label="Upload" url="http://localhost:3000/file"  (onUpload)="myUploader($event)" accept=".xlsx"></p-fileUpload>
+                <small style="color: red;">{{file26ASName}}</small>
             </td>
             <td><p-button  label="validate" (click)="validate()"></p-button></td>
 
         </tr>
 
         <tr>
-            <td>{{finalProjId}}</td>
             <td>Sales Register</td>
             <td>xlsx</td>          
             <td *ngIf="!srg1">Not Uploaded</td>
@@ -41,22 +41,25 @@
             </p-fileUpload></td> -->
 
             <td>
-                <p-fileUpload name="myfile" label="Upload" url="http://localhost:3000/file"  (onUpload)="myUploader1($event)" accept=".xlsx"></p-fileUpload>
+                <p-fileUpload mode="basic" name="myfile" label="Upload" url="http://localhost:3000/file"  (onUpload)="myUploader1($event)" accept=".xlsx"></p-fileUpload>
+                <small style="color: red;">{{fileSRName}}</small>
             </td>
             <td><p-button  label="validate" (click)="validate()"></p-button></td>
 
         </tr>
 
         <tr>
-            <td>{{finalProjId}}</td>
+            
             <td>RPT</td>
             <td>xlsx</td>
-            <td>Not Uploaded</td>
+            <td *ngIf="!rpt1">Not Uploaded</td>
+            <td *ngIf="rpt1">Uploaded</td>
             <!-- <td><p-fileUpload mode="basic" name="myfile[]" url="http://localhost:3000/client" (onUpload)="myUploader($event)" accept=".txt">
             </p-fileUpload></td> -->
 
             <td>
-                <p-fileUpload name="myfile" label="Upload" url="http://localhost:3000/file"  (onUpload)="myUploader2($event)" accept=".pdf"></p-fileUpload>
+                <p-fileUpload mode="basic" name="myfile" label="Upload" url="http://localhost:3000/file"  (onUpload)="myUploader2($event)" accept=".pdf"></p-fileUpload>
+                <small style="color: red;">{{fileRPTName}}</small>
             </td>
             <td><p-button  label="validate" (click)="validate()"></p-button></td>
 

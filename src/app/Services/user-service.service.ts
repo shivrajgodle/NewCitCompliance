@@ -26,7 +26,6 @@ export class UserServiceService {
 
   getUserByName(name:any)
   {
-    console.log("in user service",name.id);
     return this.http.get(`${environment.api_url+"/user"}/${name.id}`);
   }
 

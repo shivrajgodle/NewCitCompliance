@@ -50,28 +50,11 @@
     }
   ],
   "file": [
-    {
-      "id": 1
-    },
-    {
-      "id": 2
-    }
+    
   ],
   "team": [
     [
       {
-        "name": "Anudit",
-        "email": "anudit@pwc.com",
-        "role": {
-          "role": "Buisness Admin"
-        },
-        "id": "0wbkw",
-        "status": true,
-        "createdBy": "Admin",
-        "createdOn": 1637810811850,
-        "projectId": "aZUHJ"
-      },
-      {
         "name": "Shivraj",
         "email": "shivraj@pwc.com",
         "role": {
@@ -81,21 +64,7 @@
         "status": true,
         "createdBy": "Admin",
         "createdOn": 1637811013610,
-        "projectId": "aZUHJ"
-      }
-    ],
-    [
-      {
-        "name": "Shivraj",
-        "email": "shivraj@pwc.com",
-        "role": {
-          "role": "IT Admin"
-        },
-        "id": "ynT0p",
-        "status": true,
-        "createdBy": "Admin",
-        "createdOn": 1637811013610,
-        "projectId": "aZUHJ"
+        "projectId": "nUwhR"
       },
       {
         "name": "Akshay",
@@ -107,47 +76,7 @@
         "status": true,
         "createdBy": "Admin",
         "createdOn": 1637810759737,
-        "projectId": "aZUHJ"
-      }
-    ],
-    [
-      {
-        "name": "Anudit",
-        "email": "anudit@pwc.com",
-        "role": {
-          "role": "Buisness Admin"
-        },
-        "id": "0wbkw",
-        "status": true,
-        "createdBy": "Admin",
-        "createdOn": 1637810811850,
-        "projectId": "aZUHJ"
-      },
-      {
-        "name": "Akshay",
-        "email": "akshay@pwc.com",
-        "role": {
-          "role": "Quality Manager"
-        },
-        "id": "u1pOU",
-        "status": true,
-        "createdBy": "Admin",
-        "createdOn": 1637810759737,
-        "projectId": "aZUHJ"
-      }
-    ],
-    [
-      {
-        "name": "Anudit",
-        "email": "anudit@pwc.com",
-        "role": {
-          "role": "Buisness Admin"
-        },
-        "id": "0wbkw",
-        "status": true,
-        "createdBy": "Admin",
-        "createdOn": 1637810811850,
-        "projectId": "aZUHJ"
+        "projectId": "nUwhR"
       }
     ],
     [
@@ -162,7 +91,37 @@
         "createdBy": "Admin",
         "createdOn": 1637810811850,
         "projectId": "nUwhR"
-      },
+      }
+    ],
+    [
+      {
+        "name": "Anudit",
+        "email": "anudit@pwc.com",
+        "role": {
+          "role": "Buisness Admin"
+        },
+        "id": "0wbkw",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810811850,
+        "projectId": "nUwhR"
+      }
+    ],
+    [
+      {
+        "name": "Anudit",
+        "email": "anudit@pwc.com",
+        "role": {
+          "role": "Buisness Admin"
+        },
+        "id": "0wbkw",
+        "status": true,
+        "createdBy": "Admin",
+        "createdOn": 1637810811850,
+        "projectId": "nUwhR"
+      }
+    ],
+    [
       {
         "name": "Shivraj",
         "email": "shivraj@pwc.com",
@@ -178,57 +137,15 @@
     ],
     [
       {
-        "name": "Anudit",
-        "email": "anudit@pwc.com",
+        "name": "Shivraj",
+        "email": "shivraj@pwc.com",
         "role": {
-          "role": "Buisness Admin"
+          "role": "IT Admin"
         },
-        "id": "0wbkw",
+        "id": "ynT0p",
         "status": true,
         "createdBy": "Admin",
-        "createdOn": 1637810811850,
-        "projectId": "nUwhR"
-      }
-    ],
-    [
-      {
-        "name": "Anudit",
-        "email": "anudit@pwc.com",
-        "role": {
-          "role": "Buisness Admin"
-        },
-        "id": "0wbkw",
-        "status": true,
-        "createdBy": "Admin",
-        "createdOn": 1637810811850,
-        "projectId": "nUwhR"
-      }
-    ],
-    [
-      {
-        "name": "Anudit",
-        "email": "anudit@pwc.com",
-        "role": {
-          "role": "Buisness Admin"
-        },
-        "id": "0wbkw",
-        "status": true,
-        "createdBy": "Admin",
-        "createdOn": 1637810811850,
-        "projectId": "nUwhR"
-      }
-    ],
-    [
-      {
-        "name": "Anudit",
-        "email": "anudit@pwc.com",
-        "role": {
-          "role": "Buisness Admin"
-        },
-        "id": "0wbkw",
-        "status": true,
-        "createdBy": "Admin",
-        "createdOn": 1637810811850,
+        "createdOn": 1637811013610,
         "projectId": "nUwhR"
       }
     ]
