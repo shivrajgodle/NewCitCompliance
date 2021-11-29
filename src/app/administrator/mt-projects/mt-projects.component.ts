@@ -47,9 +47,11 @@ userEditDialogue?:boolean;
 selectedUser!:boolean;
 
 
-selectedClient!:string;
+selectedClient!:any;
 selectedYear!:number;
 selectedActivity!:string;
+
+singleClientPrecisionId!:string;
 
 itr:any;
 
@@ -75,6 +77,8 @@ constructor(private obj:ClientServiceService, private pro:ProjectServiceService,
 
 ngOnInit() {
   this.obj.getClientData().subscribe((data:any)=>{
+    
+    
     this.client1=data;  
   })
 
@@ -86,11 +90,7 @@ ngOnInit() {
 }
 
 
-onSelect(){
-  this.obj.getClientByName(this.selectedClient).subscribe((data:any)=>{
-    this.project1=data;
-  })
-}
+
 
 //to open dialog box
 addProject(){
@@ -106,6 +106,7 @@ hideDialog(){
 
 //save client information
 createProject(){
+
   this.submitted=true;
   if(this.project.projectName?.trim()){
     if(this.project.id){
@@ -121,7 +122,7 @@ createProject(){
 
       this.project.id = this.createId();
      this.pro.createProject(this.project).subscribe((result)=>{
-              window.location.reload();
+              //window.location.reload();
       })
   }
   

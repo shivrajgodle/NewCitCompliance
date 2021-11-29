@@ -41,11 +41,11 @@
             <p-dropdown [options]=years [(ngModel)]="selectedYear" [virtualScroll]="true" optionLabel='year' placeholder="select year"></p-dropdown>
         </div>
 
-        <div class="p-field">
+        <!-- <div class="p-field">
             <label for="name">Precision Code</label>
-            <input type="text" pInputText id="pcode" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="project.precisionCode" required autofocus />
+            <input type="hidden" pInputText id="pcode" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="project.precisionCode" required autofocus />
             <small class="p-invalid" style="color: red;" *ngIf="submitted && !project.precisionCode">Precision code is required.</small>
-        </div>
+        </div> -->
 
         
 
@@ -105,7 +105,7 @@
         <td>{{project1.projectName}}</td>
         <td>{{project1.activity.activity}}</td>
         <td>{{project1.annualYear.year}}</td>
-        <td>{{project1.precisionCode}}</td>
+        <td>{{project1.clientName.PrecisionId}}</td>
       <td>
         
         <p-button routerLink="/admin/team/{{project1.id}}">Assign team</p-button>
