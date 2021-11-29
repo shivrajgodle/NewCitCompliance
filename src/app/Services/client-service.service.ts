@@ -24,14 +24,4 @@ export class ClientServiceService {
   {
     return this.http.put(`${this.url}/${id}`,data);
   }
-
-
-  getClientByName(data:any)
-  {
-    return this.http.get(this.url,data.name);
-  }
-  // activation(id: any,data: any)
-  // {
-  //   return this.http.put(`${this.url}/${id}`,data);
-  // }
 }

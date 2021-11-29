@@ -21,6 +21,7 @@ export class AssignTeamComponent implements OnInit {
   selectedUser:any;
   singleUser:any;
 
+  clicked!:boolean;
 
 
   addButton:boolean=false;
@@ -35,10 +36,7 @@ export class AssignTeamComponent implements OnInit {
     
     this.id = this.router.snapshot.params['id'];
     
-    console.log(this.id,"unique ID");
-    
     this.pro.getProjectById(this.router.snapshot.params['id']).subscribe((result:any)=>{
-      console.log(result);
       this.data=result;
     })
 
@@ -59,7 +57,10 @@ export class AssignTeamComponent implements OnInit {
   }
 
 
-  saveTeam(){
+  saveTeam(event:any){
+
+    event.target.disabled=true;
+    //this.clicked=false;
 
     localStorage.setItem("pid",this.data.id);
     this.saveButton=true;
@@ -72,6 +73,7 @@ export class AssignTeamComponent implements OnInit {
     //this.teamData.push("projectId":this.data.id);
 
     this.obj.saveTeam(this.teamData).subscribe((result:any)=>{
+      console.log("Team saved",this.teamData);
       
       //nothing happen
       })  
