@@ -1,10 +1,18 @@
 export interface User{
-    id?:string;
+    memberid?:string;
     name?:string;
     email?:string;
-    role?:string;
-    status?:boolean;
-    createdBy?:string;
-    createdOn?:number;
+    reportingTo?:string;
   }
   
+  export interface UserData{
+    memberid?:string;
+    name?:string;
+    email?:string;
+    reportingTo?:string;
+    createdAt?:string;
+    updatedAt?:string;
+
+    
+  
+  }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/Modal/user';
+import { User, UserData } from 'src/app/Modal/user';
 import { UserServiceService } from 'src/app/Services/user-service.service';
 import Swal from 'sweetalert2';
-import {MessageService} from 'primeng/api';
+import {MessageService, PrimeNGConfig} from 'primeng/api';
 
 interface Role {
   role?: string
@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
  checked2: boolean = true;
 
  //variable for fetching data
- user1:User[] = [];
+ user1:UserData[] = [];
 
  user!: User;
 
@@ -41,16 +41,9 @@ export class UserComponent implements OnInit {
 
 
 
- constructor(private obj:UserServiceService,private messageService: MessageService) {
+ constructor(private obj:UserServiceService,private messageService: MessageService, private primengConfig:PrimeNGConfig) {
 
-  this.roles=[
-    {role:'Project Team Member'},
-    {role:'Project Manager'},
-    {role:'Quality Manager'},
-    {role:'Project Partner'},
-    {role:'IT Admin'},
-    {role:'Buisness Admin'}
-  ];
+  
  }
 
  
@@ -60,8 +53,14 @@ export class UserComponent implements OnInit {
    //fetching data from service method and display all data here...
 
    this.obj.getUserData().subscribe((result:any)=>{
-     this.user1 = result;
+     this.user1 = result['content'];
+    
+    
+     console.log("ddsdd",this.user1);
+     
+     
    })
+   this.primengConfig.ripple = true;
  }
 
 
@@ -77,91 +76,51 @@ export class UserComponent implements OnInit {
    this.submitted=false;
  }
 
- //save client information
- saveUser(){
-   this.submitted=true;
-   if(this.user.name?.trim()){
-     if(this.user.id){
 
 
-
-      //swal fire code starts here
-
-    this.hideDialog();
-    Swal.fire({
-      title: 'Do you want to save the changes?',
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: 'Save',
-      denyButtonText: `Don't save`,
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        this.user.createdBy="Admin";
-        this.user.createdOn=Date.now();
-
-        Swal.fire('Saved!', '', 'success')
-
-        //Logic for Update
-        this.user.role=this.selectedRole;
-        this.obj.updateUser(this.user.id,this.user).subscribe((result)=>{
-        window.location.reload();
-      })          
-
-      } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info')
-      }
-    })
-
-    //swal fire code ends here
-
-   }
-   else 
+ saveUser(){  
+  this.submitted=true;
+   if(this.user.name?.trim())
    {
-      this.user.role=this.selectedRole;
-       this.user.id = this.createId();
-       this.user.status=true;
-       this.user.createdBy="Admin";
-       this.user.createdOn=Date.now();
-
-
-       this.user1.push(this.user);
+      if(this.user.memberid)
+      {
+        //swal fire code starts here
+        this.hideDialog();
+        Swal.fire({
+          title: 'Do you want to save the changes?',
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Save',
+          denyButtonText: `Don't save`,
+        }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) 
+            {
+                Swal.fire('Saved!', '', 'success')
+                //Logic for Update
+                this.obj.updateUser(this.user.memberid,this.user).subscribe((result)=>{
+                    window.location.reload();
+                })          
+            }
+            else if (result.isDenied) 
+            {
+              Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+      }
+      else 
+      {
+     
        this.obj.postUser(this.user).subscribe((result)=>{
         this.messageService.add({severity:'success', summary:'Success', detail:'Client Created Successfully'});
-
-      //  window.location.reload();
+            window.location.reload();
        })
-   }
-   
-   
-   this.userDialogue = false;
-  //  this.user = {};
+       this.userDialogue = false;
+      }
+    }   
+  }
 
- }   
-}
-
-
- createId(): string {
-   let id = '';
-   var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-   for ( var i = 0; i < 5; i++ ) {
-       id += chars.charAt(Math.floor(Math.random() * chars.length));
-   }
-   return id;
- }
-
-
- findIndexById(id:string)
- {
-   let index = -1;
-   for (let i = 0; i < this.user1.length; i++) {
-       if (this.user1[i].id === id) {
-           index = i;
-           break;
-       }
-   }
-   return index;
- }
+ 
 
  //Edit client information
    editUser(user:User){
@@ -171,20 +130,5 @@ export class UserComponent implements OnInit {
    console.log(user);
    
  }
-
- //method for changing the status of user
- changeStatus(user:User)
- {
-
-  this.user={...user};
-
-    if(this.user.id)
-    {        
-      this.obj.updateUser(this.user.id,this.user).subscribe((result)=>{
-      console.log("status"+result);
-        }) 
-    }
-}
-
 
 }

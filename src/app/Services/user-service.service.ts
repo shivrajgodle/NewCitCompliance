@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class UserServiceService {
 
  
-  url = "http://localhost:3000/user";
+  url = "http://localhost:8080/members";
   constructor(private http:HttpClient) { }
 
   getUserData(){

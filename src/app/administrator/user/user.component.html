@@ -29,11 +29,12 @@
         </div>
     <div class="p-field">
       <label for="email">Email_ID</label>
-      <input type="text" pInputText id="approver"   pattern="^[A-Za-z0-9._%+-]+@pwc.com$" [(ngModel)]="user.email" required autofocus />
+      <input type="text" pInputText id="email"   pattern="^[A-Za-z0-9._%+-]+@pwc.com$" [(ngModel)]="user.email" required autofocus />
       <small class="p-invalid" *ngIf="submitted && !user.email">Email-ID is required</small>
   </div>
-    <div class="p-field" style="margin-bottom: 50px;">
-    <p-dropdown [options]=roles [(ngModel)]="selectedRole" optionLabel="role" placeholder="select role"></p-dropdown>
+  <div>
+  <label for="email">Reporting To</label>
+  <input type="text" pInputText id="reportingTo" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="user.reportingTo" required autofocus />
     </div>
    
     </ng-template>
@@ -51,7 +52,7 @@
   <!-- Table to show client data -->
   
   <p-table #dt [value]="user1" [rows]="10" [paginator]="true"
-    [globalFilterFields]="['id','name','email','role']" [rowHover]="true" dataKey="id"
+    [globalFilterFields]="['id','name','email','reporting_to']" [rowHover]="true" dataKey="id"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
     <ng-template pTemplate="caption">
       <div class="p-d-flex p-ai-center p-jc-between">
@@ -69,46 +70,35 @@
   
         </th>
   
-        <th pSortableColumn="id">User ID <p-sortIcon field="id"></p-sortIcon>
+        <th pSortableColumn="memberid">User ID <p-sortIcon field="memberid"></p-sortIcon>
         </th>
   
         <th pSortableColumn="name"> Name <p-sortIcon field="name"></p-sortIcon>
         </th>
         <th pSortableColumn="email">Email-ID <p-sortIcon field="email"></p-sortIcon>
         </th>
-        <th pSortableColumn="role">Role <p-sortIcon field="role"></p-sortIcon>
+        <th pSortableColumn="createdAt"> createdAt <p-sortIcon field="createdAt"></p-sortIcon>
         </th>
-        <th pSortableColumn="createdBy">Created By <p-sortIcon field="createdBy"></p-sortIcon>
+        <th pSortableColumn="updatedAt">updatedAt<p-sortIcon field="updatedAt"></p-sortIcon>
         </th>
-        <th pSortableColumn="createdOn">Created On <p-sortIcon field="createdOn"></p-sortIcon>
+        <th pSortableColumn="reportingTo">Reporting To<p-sortIcon field="reportingTo"></p-sortIcon>
         </th>
         <th>Action</th>
-        
-        <th pSortableColumn="status">Status 
-        </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user1>
       <tr>
-        <td>
-  
-        </td>
-        <td>{{user1.id}}</td>
+        <td></td>
+        <td>{{user1.memberid}}</td>
         <td>{{user1.name}}</td>
         <td>{{user1.email}}</td>
-        <td>{{user1.role.role}}</td>
-        <td>{{user1.createdBy}}</td>
-        <td>{{user1.createdOn | date:'EEE, dd-MMM yyyy'}}</td>
-        <td>
-          <p-button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editUser(user1)"></p-button>
-        </td>
-        <td>
-  
-         
-          <p-toggleButton [(ngModel)]="user1.status" onLabel="Active" offLabel="Deactive" Icon="pi pi-check" offIcon="pi pi-times" (click)="changeStatus(user1)" [style]="{'width': '10em'}"></p-toggleButton>
-        </td>
+        <td>{{user1.createdAt | date:'EEE, dd-MMM yyyy,h:mm:ss a' }}</td>
+        <td>{{user1.updatedAt | date:'EEE, dd-MMM yyyy,h:mm:ss a'}}</td>
+        <td>{{user1.reportingTo}}</td>
+        <td><p-button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editUser(user1)"></p-button></td>
       </tr>
     </ng-template>
+
     <ng-template pTemplate="summary">
       <div class="p-d-flex p-ai-center p-jc-between">
         In total there are {{user1 ? user1.length : 0 }} users.
