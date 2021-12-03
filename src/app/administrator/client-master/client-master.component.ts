@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Client } from 'src/app/Modal/client';
+import { Client, ClientData } from 'src/app/Modal/client';
 import { ClientServiceService } from 'src/app/Services/client-service.service';
 import { SelectItem, PrimeNGConfig, MessageService} from 'primeng/api';
 import Swal from 'sweetalert2';
@@ -13,10 +13,8 @@ import Swal from 'sweetalert2';
 export class ClientMasterComponent implements OnInit {
 
    
-  //  checked2: boolean = true;
- 
    //variable for fetching data
-   client1:Client[] = [];
+   client1:ClientData[]=[];
  
    client!: Client;
 
@@ -40,112 +38,99 @@ export class ClientMasterComponent implements OnInit {
      //fetching data from service method and display all data here...
  
      this.cls.getClientData().subscribe((result:any)=>{
-       this.client1 = result;
-       
+       this.client1=result['content'];
      })
 
      this.primengConfig.ripple = true;
    }
  
 
-//    showSuccess() {
-//     this.messageService.add({severity:'success', summary: 'Success', detail: 'Message Content'});
-// }
-  
- //to open dialog box
+   //to open dialog box
    addClient(){
      this.client={};
      this.submitted=false;
      this.clientDialogue=true;
    }
- //to hide dialog box
+
+   //to hide dialog box
    hideDialog(){
      this.clientDialogue=false;
      this.submitted=false;
    }
  
+
+
+
    //save client information
    saveClient(){
      this.submitted=true;
-     if(this.client.companyName?.trim()){
-       if(this.client.id){
-
-    //swal fire code starts here
-
-    this.hideDialog();
-    Swal.fire({
-      title: 'Do you want to save the changes?',
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: 'Save',
-      denyButtonText: `Don't save`,
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        this.client.createdBy="Admin";
-        this.client.createdOn=Date.now();
-
-        Swal.fire('Saved!', '', 'success')
-
-        //Logic for Update
-        this.cls.updateClient(this.client.id,this.client).subscribe((result)=>{
-          window.location.reload();
-        })          
-
-
-      } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info')
-      }
-    })
-
-    //swal fire code ends here
-
-     }
-     else 
-     {
-      
-   
-        //code for Saving New Client
-         this.client.id = this.createId();
-         this.client.status = this.checked1;
-          this.client.createdBy="Admin";
-          this.client.createdOn=Date.now();
-
-         this.client1.push(this.client);
-         this.cls.postClient(this.client).subscribe((result)=>{
-        //  window.location.reload();
-        this.messageService.add({severity:'success', summary:'Success', detail:'Client Created Successfully'});
-         })
-      
-     }
      
-     this.clientDialogue = false;
-    //  this.client = {};
-   }   
- }
+       if(this.client.companyName?.trim()){
+        if(this.client.id)
+        {
+        //swal fire code starts here
+        this.hideDialog();
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+          }).then((result) => {
+      
+        /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) 
+          {
+              Swal.fire('Saved!', '', 'success')
+              //Logic for Update
+              this.cls.updateClient(this.client.id,this.client).subscribe((result)=>{
+              window.location.reload();
+            })          
+          }else if (result.isDenied) {
+            Swal.fire('Changes are not saved', '', 'info')
+          }
+        })
+      }
+       else 
+       {
+
+    //code for Saving New Client
+        this.client.status = true;
+          
+        //this.client1.push(this.client);
+        this.cls.postClient(this.client).subscribe((result)=>{
+            window.location.reload();
+            this.messageService.add({severity:'success', summary:'Success', detail:'Client Created Successfully'});
+          })
+          this.clientDialogue = false;
+      }
+    }
+  }
+    
  
  
-   createId(): string {
-     let id = '';
-     var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-     for ( var i = 0; i < 5; i++ ) {
-         id += chars.charAt(Math.floor(Math.random() * chars.length));
-     }
-     return id;
-   }
+ 
+  //  createId(): string {
+  //    let id = '';
+  //    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  //    for ( var i = 0; i < 5; i++ ) {
+  //        id += chars.charAt(Math.floor(Math.random() * chars.length));
+  //    }
+  //    return id;
+  //  }
  
  
-   findIndexById(id:string)
-   {
-     let index = -1;
-     for (let i = 0; i < this.client1.length; i++) {
-         if (this.client1[i].id === id) {
-             index = i;
-             break;
-         }
-     }
-     return index;
-   }
+  //  findIndexById(id:string)
+  //  {
+  //    let index = -1;
+  //    for (let i = 0; i < this.client1.length; i++) {
+  //        if (this.client1[i].id === id) {
+  //            index = i;
+  //            break;
+  //        }
+  //    }
+  //    return index;
+  //  }
  
    //Edit client information
 
@@ -162,15 +147,14 @@ export class ClientMasterComponent implements OnInit {
    {
 
     this.client={...client};
-
-      if(this.client.id)
+      client.status=false;
+      if(this.client.companyName)
       {        
         this.cls.updateClient(this.client.id,this.client).subscribe((result)=>{
-        console.log("status"+result);
+          window.location.reload();
+          console.log("status"+result);
+
           }) 
       }
   }
-
-
-
 }

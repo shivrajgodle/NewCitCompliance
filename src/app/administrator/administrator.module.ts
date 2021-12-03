@@ -26,6 +26,7 @@ import {PanelMenuModule} from 'primeng/panelmenu';
 import {MenuItem} from 'primeng/api';
 import { AssignTeamComponent } from './assign-team/assign-team.component';
 import { MtProjectsComponent } from './mt-projects/mt-projects.component';
+import {DataViewModule} from 'primeng/dataview';
 
 
 
@@ -59,7 +60,8 @@ import { MtProjectsComponent } from './mt-projects/mt-projects.component';
     DropdownModule,
     AngularFileUploaderModule,
     PanelMenuModule, 
-    CardModule   
+    CardModule,
+    DataViewModule   
   ]
 })
 export class AdministratorModule { }

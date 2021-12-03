@@ -1,117 +1,119 @@
 <header>
     <h3>User Creation</h3>
-  </header>
-  
-  <div class="card">
+</header>
+
+<div class="card">
     <p-toolbar styleClass="p-mb-4">
-      <ng-template pTemplate="left">
-        <button pButton pRipple label="Add User" icon="pi pi-plus" (click)="addUser()"
-          class="p-button-success p-mr-2"></button>
-      </ng-template>
-  
-      <ng-template pTemplate="right">
-        <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Upload" chooseLabel="Bulk Upload"
-          class="p-mr-2 p-d-inline-block"></p-fileUpload>
-      </ng-template>
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Add User" icon="pi pi-plus" (click)="addUser()" class="p-button-success p-mr-2"></button>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Upload" chooseLabel="Bulk Upload" class="p-mr-2 p-d-inline-block"></p-fileUpload>
+        </ng-template>
     </p-toolbar>
-  </div>
-  
-  <p-toast></p-toast>
-  
-  
-  <!-- Dialog box to add Client -->
-  <p-dialog  [(visible)]="userDialogue" [style]="{width: '450px'}" header="User Details" [modal]="true" styleClass="p-fluid">
+</div>
+
+<p-toast></p-toast>
+
+
+<!-- Dialog box to add Client -->
+<p-dialog [(visible)]="userDialogue" [style]="{width: '450px'}" header="User Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
             <label for="name">Name</label>
             <input type="text" pInputText id="name" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="user.name" required autofocus />
             <small class="p-invalid" *ngIf="submitted && !user.name"> Name is required.</small>
         </div>
-    <div class="p-field">
-      <label for="email">Email_ID</label>
-      <input type="text" pInputText id="approver"   pattern="^[A-Za-z0-9._%+-]+@pwc.com$" [(ngModel)]="user.email" required autofocus />
-      <small class="p-invalid" *ngIf="submitted && !user.email">Email-ID is required</small>
-  </div>
-    <div class="p-field" style="margin-bottom: 50px;">
-    <p-dropdown [options]=roles [(ngModel)]="selectedRole" optionLabel="role" placeholder="select role"></p-dropdown>
-    </div>
-   
+        <div class="p-field">
+            <label for="email">Email_ID</label>
+            <input type="text" pInputText id="approver" pattern="^[A-Za-z0-9._%+-]+@pwc.com$" [(ngModel)]="user.email" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !user.email">Email-ID is required</small>
+        </div>
+        <div class="p-field" style="margin-bottom: 50px;">
+            <p-dropdown [options]=roles [(ngModel)]="selectedRole" optionLabel="role" placeholder="select role"></p-dropdown>
+        </div>
+
     </ng-template>
-    
+
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
         <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveUser()"></button>
     </ng-template>
-  </p-dialog>
-  
-  
-  
-  
-  
-  <!-- Table to show client data -->
-  
-  <p-table #dt [value]="user1" [rows]="10" [paginator]="true"
-    [globalFilterFields]="['id','name','email','role']" [rowHover]="true" dataKey="id"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+</p-dialog>
+
+
+
+
+
+<!-- Table to show client data -->
+
+<p-table #dt [value]="user1" [rows]="10" [paginator]="true" [globalFilterFields]="['id','name','email','role']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
     <ng-template pTemplate="caption">
-      <div class="p-d-flex p-ai-center p-jc-between">
-        <h5 class="p-m-0">Manage User</h5>
-        <span class="p-input-icon-left">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            <h5 class="p-m-0">Manage User</h5>
+            <span class="p-input-icon-left">
           <i class="pi pi-search"></i>
           <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
             placeholder="Search..." />
         </span>
-      </div>
+        </div>
     </ng-template>
     <ng-template pTemplate="header">
-      <tr>
-        <th style="width: 3rem">
-  
-        </th>
-  
-        <th pSortableColumn="id">User ID <p-sortIcon field="id"></p-sortIcon>
-        </th>
-  
-        <th pSortableColumn="name"> Name <p-sortIcon field="name"></p-sortIcon>
-        </th>
-        <th pSortableColumn="email">Email-ID <p-sortIcon field="email"></p-sortIcon>
-        </th>
-        <th pSortableColumn="role">Role <p-sortIcon field="role"></p-sortIcon>
-        </th>
-        <th pSortableColumn="createdBy">Created By <p-sortIcon field="createdBy"></p-sortIcon>
-        </th>
-        <th pSortableColumn="createdOn">Created On <p-sortIcon field="createdOn"></p-sortIcon>
-        </th>
-        <th>Action</th>
-        
-        <th pSortableColumn="status">Status 
-        </th>
-      </tr>
+        <tr>
+            <th style="width: 3rem">
+
+            </th>
+
+            <th pSortableColumn="id">User ID
+                <p-sortIcon field="id"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="name"> Name
+                <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="email">Email-ID
+                <p-sortIcon field="email"></p-sortIcon>
+            </th>
+            <th pSortableColumn="role">Role
+                <p-sortIcon field="role"></p-sortIcon>
+            </th>
+            <th pSortableColumn="createdBy">Created By
+                <p-sortIcon field="createdBy"></p-sortIcon>
+            </th>
+            <th pSortableColumn="createdOn">Created On
+                <p-sortIcon field="createdOn"></p-sortIcon>
+            </th>
+            <th>Action</th>
+
+            <th pSortableColumn="status">Status
+            </th>
+        </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user1>
-      <tr>
-        <td>
-  
-        </td>
-        <td>{{user1.id}}</td>
-        <td>{{user1.name}}</td>
-        <td>{{user1.email}}</td>
-        <td>{{user1.role.role}}</td>
-        <td>{{user1.createdBy}}</td>
-        <td>{{user1.createdOn | date:'EEE, dd-MMM yyyy'}}</td>
-        <td>
-          <p-button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editUser(user1)"></p-button>
-        </td>
-        <td>
-  
-         
-          <p-toggleButton [(ngModel)]="user1.status" onLabel="Active" offLabel="Deactive" Icon="pi pi-check" offIcon="pi pi-times" (click)="changeStatus(user1)" [style]="{'width': '10em'}"></p-toggleButton>
-        </td>
-      </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>{{user1.id}}</td>
+            <td>{{user1.name}}</td>
+            <td>{{user1.email}}</td>
+            <td>{{user1.role.role}}</td>
+            <td>{{user1.createdBy}}</td>
+            <td>{{user1.createdOn | date:'EEE, dd-MMM yyyy'}}</td>
+            <td>
+                <p-button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editUser(user1)"></p-button>
+            </td>
+            <td>
+
+
+                <p-toggleButton [(ngModel)]="user1.status" onLabel="Active" offLabel="Deactive" Icon="pi pi-check" offIcon="pi pi-times" (click)="changeStatus(user1)" [style]="{'width': '10em'}"></p-toggleButton>
+            </td>
+        </tr>
     </ng-template>
     <ng-template pTemplate="summary">
-      <div class="p-d-flex p-ai-center p-jc-between">
-        In total there are {{user1 ? user1.length : 0 }} users.
-      </div>
+        <div class="p-d-flex p-ai-center p-jc-between">
+            In total there are {{user1 ? user1.length : 0 }} users.
+        </div>
     </ng-template>
-  </p-table>
+</p-table>

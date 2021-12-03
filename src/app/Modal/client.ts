@@ -1,13 +1,26 @@
 export interface Client{
-    id?:string;
+    id?:number;
     companyName?:string;
-    PAN?:string;
+    pan?:string;
+    tan?:string;
     groupCompany?:string;
-    PrecisionId?:string;
+    precisionId?:string;
     approver?:string;
     status?:boolean;
-    createdBy?:string;
-    createdOn?:number;
-    TAN?:string;
   }
-  
+
+
+
+  export interface ClientData{
+    companyName?:string;
+    pan?:string;
+    tan?:string;
+    groupCompany?:string;
+    precisionId?:string;
+    approver?:string;
+    status?:boolean;
+    id?:number;
+    createdAt?:Date;
+    updatedAt?:Date;
+  }
+  	
