@@ -53,11 +53,11 @@ export class UserComponent implements OnInit {
    //fetching data from service method and display all data here...
 
    this.obj.getUserData().subscribe((result:any)=>{
+     console.log("before fetching data from backend");
+     
      this.user1 = result['content'];
     
-    
-     console.log("ddsdd",this.user1);
-     
+     console.log("after fetching data from backend"); 
      
    })
    this.primengConfig.ripple = true;

@@ -12,6 +12,8 @@ export class UserServiceService {
   constructor(private http:HttpClient) { }
 
   getUserData(){
+    console.log("inside user service");
+    
     return this.http.get(this.url);
   }
 
