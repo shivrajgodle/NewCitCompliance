@@ -1,45 +1,73 @@
 <header>
     <h3>Project Creation</h3>
-  </header>
-  <div class="card">
+</header>
+<div class="card">
     <p-toolbar styleClass="p-mb-4">
-      <ng-template pTemplate="left">
-        <button pButton pRipple label="Create Project" icon="pi pi-plus" (click)="addProject()"
-          class="p-button-success p-mr-2"></button>
-      </ng-template>
-  
-    </p-toolbar>
-  </div>
- 
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Create Project" icon="pi pi-plus" (click)="addProject()" class="p-button-success p-mr-2"></button>
+        </ng-template>
 
-  
-  
-  <!-- Dialog box to create project -->
-  <p-dialog  [(visible)]="projectDialog" [style]="{width: '450px'}" header="Project Details" [modal]="true" styleClass="p-fluid">
+    </p-toolbar>
+</div>
+
+
+
+
+<!-- Dialog box to create project -->
+<p-dialog [(visible)]="projectDialog" [style]="{width: '450px'}" header="Project Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field" style="margin-bottom: 50px;">
-            <p-dropdown [options]=client1  [(ngModel)]="selectedClient" optionLabel='companyName' placeholder="select Client">
+            <p-dropdown [options]=client1 [(ngModel)]="selectedClientId" optionLabel='id' placeholder="select Client">
             </p-dropdown>
         </div>
-                
+
         <div class="p-field">
             <label for="name">Project Name</label>
             <input type="text" pInputText id="name" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="project.projectName" required autofocus />
             <small class="p-invalid" style="color: red;" *ngIf="submitted && !project.projectName">Project Name is required.</small>
         </div>
-    
+
         <br><br>
-    
+
 
         <div class="p-field" style="margin-bottom: 50px;">
-          <p-dropdown [options]=activities [(ngModel)]="selectedActivity" optionLabel='activity' placeholder="select Activity">
-          </p-dropdown>
-      </div>
+            <p-dropdown [options]=activities [(ngModel)]="selectedActivity" optionLabel='activity' placeholder="select Activity">
+            </p-dropdown>
+        </div>
 
 
         <div class="p-field" style="margin-bottom: 50px;">
             <p-dropdown [options]=years [(ngModel)]="selectedYear" [virtualScroll]="true" optionLabel='year' placeholder="select year"></p-dropdown>
         </div>
+
+        <div class="p-field" style="margin-bottom: 50px;">
+            <p-dropdown [options]=user1 [(ngModel)]="selectedProjectManager" optionLabel='memberid' placeholder="select project manager">
+            </p-dropdown>
+        </div>
+
+        <div class="p-field" style="margin-bottom: 50px;">
+            <p-dropdown [options]=user1 [(ngModel)]="selectedQualityManager" optionLabel='memberid' placeholder="select Quality Manager">
+            </p-dropdown>
+        </div>
+
+        <div class="p-field" style="margin-bottom: 50px;">
+            <p-dropdown [options]=user1 [(ngModel)]="selectedTeamMember1" optionLabel='memberid' placeholder="select Team Member1">
+            </p-dropdown>
+        </div>
+
+        <div class="p-field" style="margin-bottom: 50px;">
+            <p-dropdown [options]=user1 [(ngModel)]="selectedTeamMember2" optionLabel='memberid' placeholder="select Team Member2">
+            </p-dropdown>
+        </div>
+
+        <div class="p-field" style="margin-bottom: 50px;">
+            <p-dropdown [options]=user1 [(ngModel)]="selectedTeamMember3" optionLabel='memberid' placeholder="select Team Member3">
+            </p-dropdown>
+        </div>
+
+
+
+
 
         <!-- <div class="p-field">
             <label for="name">Precision Code</label>
@@ -47,77 +75,105 @@
             <small class="p-invalid" style="color: red;" *ngIf="submitted && !project.precisionCode">Precision code is required.</small>
         </div> -->
 
-        
+
 
     </ng-template>
-    
+
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" style="float: left;" icon="pi pi-times" class="p-button-danger" (click)="hideDialog()"></button>
         <button pButton pRipple label="Save" style="float: right;" icon="pi pi-check" class="p-button-success" (click)="createProject()"></button>
     </ng-template>
-  </p-dialog>
-  
-  
-  
-  
-  
-  <!-- Table to show client data -->
-  
-  <p-table #dt [value]="project1" [rows]="5" [paginator]="true"
-    [globalFilterFields]="['id','clientName','projectName','activity','annualYear','precisionCode']" [rowHover]="true" dataKey="id"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+</p-dialog>
+
+
+
+
+<p-progressSpinner *ngIf="loader" id="loader" animationDuration="3s"></p-progressSpinner>
+
+<!-- Table to show client data -->
+
+<p-table #dt [value]="project1" [rows]="5" [paginator]="true" [globalFilterFields]="['id ','clientName ','projectName ','activity ','annualYear ','precisionCode ']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true">
     <ng-template pTemplate="caption">
-      <div class="p-d-flex p-ai-center p-jc-between">
-        <h5 class="p-m-0">Manage User</h5>
-        <span class="p-input-icon-left">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            <h5 class="p-m-0">Manage User</h5>
+            <span class="p-input-icon-left">
           <i class="pi pi-search"></i>
-          <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+          <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains ')"
             placeholder="Search..." />
         </span>
-      </div>
+        </div>
     </ng-template>
     <ng-template pTemplate="header">
-      <tr>
-       
-  
-        <th pSortableColumn="id">Project ID <p-sortIcon field="id"></p-sortIcon>
-        </th>
-  
-        <th pSortableColumn="clientName"> Client Name <p-sortIcon field="clientName"></p-sortIcon>
-        </th>
-        <th pSortableColumn="projectName">Project Name <p-sortIcon field="projectName"></p-sortIcon>
-        </th>
-        <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon>
-        </th> 
-        <th pSortableColumn="annualYear">AnnualYear <p-sortIcon field="annualYear"></p-sortIcon>
-        </th>
-        <th pSortableColumn="precisionCode">PrecisionCode <p-sortIcon field="precisionCode"></p-sortIcon>
-        </th>
-        <th style="text-align: center;">Action 
-        </th>
-        
-      </tr>
+        <tr>
+
+
+            <th pSortableColumn="id">Project ID
+                <p-sortIcon field="id"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="clientName"> Client Name
+                <p-sortIcon field="clientName"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="projectName">Project Name
+                <p-sortIcon field="projectName"></p-sortIcon>
+            </th>
+            <th pSortableColumn="activity">Activity
+                <p-sortIcon field="activity"></p-sortIcon>
+            </th>
+            <th pSortableColumn="annualYear">AnnualYear
+                <p-sortIcon field="annualYear"></p-sortIcon>
+            </th>
+            <th pSortableColumn="annualYear">Project Manager
+                <p-sortIcon field="annualYear"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="annualYear">Quality Manager
+                <p-sortIcon field="annualYear"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="annualYear">Team Member1
+                <p-sortIcon field="annualYear"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="annualYear">Team Member2
+                <p-sortIcon field="annualYear"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="annualYear">Team Member3
+                <p-sortIcon field="annualYear"></p-sortIcon>
+            </th>
+            <th style="text-align: center;">Action
+            </th>
+
+        </tr>
     </ng-template>
     <ng-template pTemplate="body" let-project1>
-      <tr>
-        <td>{{project1.id}}</td>
-        <td>{{project1.clientName.companyName}}</td>
-        <td>{{project1.projectName}}</td>
-        <td>{{project1.activity.activity}}</td>
-        <td>{{project1.annualYear.year}}</td>
-        <td>{{project1.clientName.PrecisionId}}</td>
-      <td>
-        
-        <p-button routerLink="/admin/team/{{project1.id}}">Assign team</p-button>
-    </td>
-    </tr>
- 
+        <tr>
+            <td>{{project1.id}}</td>
+            <td>{{project1.clientId}}</td>
+            <td>{{project1.projectName}}</td>
+            <td>{{project1.activity}}</td>
+            <td>{{project1.annualYear}}</td>
+            <td>{{project1.projectManagerId}}</td>
+            <td>{{project1.qualityManagerId}}</td>
+            <td>{{project1.teamMemberId1}}</td>
+            <td>{{project1.teamMemberId2}}</td>
+            <td>{{project1.teamMemberId3}}</td>
+            <td>
+                <p-button pButton pRipple icon="pi pi-pencil" (click)="editProject(project1)" class="p-button-rounded p-button-success p-mr-2"></p-button>
+            </td>
+            <td>
+                <p-fileUpload mode="basic" url="#" accept=".pdf">Upload ITR6</p-fileUpload>
+            </td>
+        </tr>
+
 
     </ng-template>
     <ng-template pTemplate="summary">
-      <div class="p-d-flex p-ai-center p-jc-between">
-        In total there are {{project1 ? project1.length : 0 }} projects.
-      </div>
+        <div class="p-d-flex p-ai-center p-jc-between">
+            In total there are {{project1 ? project1.length : 0 }} projects.
+        </div>
     </ng-template>
-  </p-table>
-
+</p-table>

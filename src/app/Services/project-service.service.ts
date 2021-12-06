@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProjectServiceService {
 
-  url = "http://localhost:3000/project";
+  url = "http://localhost:8080/projects";
 
   constructor(private http:HttpClient) { }
 
@@ -16,6 +16,8 @@ export class ProjectServiceService {
   }
 
   createProject(data:any){
+    console.log(data,"inside project service");
+    
         return this.http.post(this.url,data);
   }
 

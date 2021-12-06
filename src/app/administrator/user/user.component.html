@@ -1,107 +1,111 @@
 <header>
     <h3>User Creation</h3>
-  </header>
-  
-  <div class="card">
+</header>
+
+<div class="card">
     <p-toolbar styleClass="p-mb-4">
-      <ng-template pTemplate="left">
-        <button pButton pRipple label="Add User" icon="pi pi-plus" (click)="addUser()"
-          class="p-button-success p-mr-2"></button>
-      </ng-template>
-  
-      <ng-template pTemplate="right">
-        <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Upload" chooseLabel="Bulk Upload"
-          class="p-mr-2 p-d-inline-block"></p-fileUpload>
-      </ng-template>
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Add User" icon="pi pi-plus" (click)="addUser()" class="p-button-success p-mr-2"></button>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Upload" chooseLabel="Bulk Upload" class="p-mr-2 p-d-inline-block"></p-fileUpload>
+        </ng-template>
     </p-toolbar>
-  </div>
-  
-  <p-toast></p-toast>
-  
-  
-  <!-- Dialog box to add Client -->
-  <p-dialog  [(visible)]="userDialogue" [style]="{width: '450px'}" header="User Details" [modal]="true" styleClass="p-fluid">
+</div>
+
+<p-toast></p-toast>
+
+
+<!-- Dialog box to add Client -->
+<p-dialog [(visible)]="userDialogue" [style]="{width: '450px'}" header="User Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
             <label for="name">Name</label>
             <input type="text" pInputText id="name" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="user.name" required autofocus />
             <small class="p-invalid" *ngIf="submitted && !user.name"> Name is required.</small>
         </div>
-    <div class="p-field">
-      <label for="email">Email_ID</label>
-      <input type="text" pInputText id="email"   pattern="^[A-Za-z0-9._%+-]+@pwc.com$" [(ngModel)]="user.email" required autofocus />
-      <small class="p-invalid" *ngIf="submitted && !user.email">Email-ID is required</small>
-  </div>
-  <div>
-  <label for="email">Reporting To</label>
-  <input type="text" pInputText id="reportingTo" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="user.reportingTo" required autofocus />
-    </div>
-   
+        <div class="p-field">
+            <label for="email">Email_ID</label>
+            <input type="text" pInputText id="email" pattern="^[A-Za-z0-9._%+-]+@pwc.com$" [(ngModel)]="user.email" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !user.email">Email-ID is required</small>
+        </div>
+        <div>
+            <label for="email">Reporting To</label>
+            <input type="text" pInputText id="reportingTo" pattern="[a-zA-Z ]{2,20}" [(ngModel)]="user.reportingTo" required autofocus />
+        </div>
+
     </ng-template>
-    
+
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
         <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveUser()"></button>
     </ng-template>
-  </p-dialog>
-  
-  
-  
-  
-  
-  <!-- Table to show client data -->
-  
-  <p-table #dt [value]="user1" [rows]="10" [paginator]="true"
-    [globalFilterFields]="['id','name','email','reporting_to']" [rowHover]="true" dataKey="id"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+</p-dialog>
+
+
+
+
+
+<!-- Table to show client data -->
+
+<p-table #dt [value]="user1" [rows]="5" [paginator]="true" [globalFilterFields]="['id','name','email','reporting_to']" [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
     <ng-template pTemplate="caption">
-      <div class="p-d-flex p-ai-center p-jc-between">
-        <h5 class="p-m-0">Manage User</h5>
-        <span class="p-input-icon-left">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            <h5 class="p-m-0">Manage User</h5>
+            <span class="p-input-icon-left">
           <i class="pi pi-search"></i>
           <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
             placeholder="Search..." />
         </span>
-      </div>
+        </div>
     </ng-template>
     <ng-template pTemplate="header">
-      <tr>
-        <th style="width: 3rem">
-  
-        </th>
-  
-        <th pSortableColumn="memberid">User ID <p-sortIcon field="memberid"></p-sortIcon>
-        </th>
-  
-        <th pSortableColumn="name"> Name <p-sortIcon field="name"></p-sortIcon>
-        </th>
-        <th pSortableColumn="email">Email-ID <p-sortIcon field="email"></p-sortIcon>
-        </th>
-        <th pSortableColumn="createdAt"> createdAt <p-sortIcon field="createdAt"></p-sortIcon>
-        </th>
-        <th pSortableColumn="updatedAt">updatedAt<p-sortIcon field="updatedAt"></p-sortIcon>
-        </th>
-        <th pSortableColumn="reportingTo">Reporting To<p-sortIcon field="reportingTo"></p-sortIcon>
-        </th>
-        <th>Action</th>
-      </tr>
+        <tr>
+            <th style="width: 3rem">
+
+            </th>
+
+            <th pSortableColumn="memberid">User ID
+                <p-sortIcon field="memberid"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="name"> Name
+                <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="email">Email-ID
+                <p-sortIcon field="email"></p-sortIcon>
+            </th>
+            <th pSortableColumn="createdAt"> createdAt
+                <p-sortIcon field="createdAt"></p-sortIcon>
+            </th>
+            <th pSortableColumn="updatedAt">updatedAt
+                <p-sortIcon field="updatedAt"></p-sortIcon>
+            </th>
+            <th pSortableColumn="reportingTo">Reporting To
+                <p-sortIcon field="reportingTo"></p-sortIcon>
+            </th>
+            <th>Action</th>
+        </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user1>
-      <tr>
-        <td></td>
-        <td>{{user1.memberid}}</td>
-        <td>{{user1.name}}</td>
-        <td>{{user1.email}}</td>
-        <td>{{user1.createdAt | date:'EEE, dd-MMM yyyy,h:mm:ss a' }}</td>
-        <td>{{user1.updatedAt | date:'EEE, dd-MMM yyyy,h:mm:ss a'}}</td>
-        <td>{{user1.reportingTo}}</td>
-        <td><p-button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editUser(user1)"></p-button></td>
-      </tr>
+        <tr>
+            <td></td>
+            <td>{{user1.memberid}}</td>
+            <td>{{user1.name}}</td>
+            <td>{{user1.email}}</td>
+            <td>{{user1.createdAt | date:'EEE, dd-MMM yyyy,h:mm:ss a' }}</td>
+            <td>{{user1.updatedAt | date:'EEE, dd-MMM yyyy,h:mm:ss a'}}</td>
+            <td>{{user1.reportingTo}}</td>
+            <td>
+                <p-button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editUser(user1)"></p-button>
+            </td>
+        </tr>
     </ng-template>
 
     <ng-template pTemplate="summary">
-      <div class="p-d-flex p-ai-center p-jc-between">
-        In total there are {{user1 ? user1.length : 0 }} users.
-      </div>
+        <div class="p-d-flex p-ai-center p-jc-between">
+            In total there are {{user1 ? user1.length : 0 }} users.
+        </div>
     </ng-template>
-  </p-table>
+</p-table>

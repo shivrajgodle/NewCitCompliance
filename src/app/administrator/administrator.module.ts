@@ -21,6 +21,7 @@ import { DocumentManagerComponent } from './document-manager/document-manager.co
 import { ProjectComponent } from './project/project.component';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import {CardModule} from 'primeng/card';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {MenuItem} from 'primeng/api';
@@ -59,7 +60,8 @@ import { MtProjectsComponent } from './mt-projects/mt-projects.component';
     DropdownModule,
     AngularFileUploaderModule,
     PanelMenuModule, 
-    CardModule   
+    CardModule,
+    ProgressSpinnerModule   
   ]
 })
 export class AdministratorModule { }

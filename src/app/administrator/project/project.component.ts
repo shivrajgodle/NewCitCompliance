@@ -48,7 +48,7 @@ selectedUser!:boolean;
 
 
 selectedClient!:string;
-selectedYear!:number;
+selectedYear!:string;
 selectedActivity!:string;
 
 itr:any;
@@ -104,17 +104,17 @@ createProject(){
   this.submitted=true;
   if(this.project.projectName?.trim()){
     if(this.project.id){
-     this.project.clientName=this.selectedClient;
+     this.project.clientId=this.selectedClient;
      this.project.annualYear=this.selectedYear;
     this.project.activity=this.selectedActivity;
   }
   else 
   {
-     this.project.clientName=this.selectedClient;
+     this.project.clientId=this.selectedClient;
      this.project.annualYear=this.selectedYear;
      this.project.activity=this.selectedActivity;
 
-      this.project.id = this.createId();
+      this.project.id = parseInt(this.createId());
       this.pro.createProject(this.project).subscribe((result)=>{
               window.location.reload();
       })
@@ -144,7 +144,7 @@ createId(): string {
 }
 
 
-findIndexById(id:string)
+findIndexById(id:number)
 {
   let index = -1;
   for (let i = 0; i < this.project1.length; i++) {

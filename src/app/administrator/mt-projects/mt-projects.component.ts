@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { Client } from 'src/app/Modal/client';
+import { Client, ClientData } from 'src/app/Modal/client';
 import { Project } from 'src/app/Modal/project';
 import { ClientServiceService } from 'src/app/Services/client-service.service';
 import { ProjectServiceService } from 'src/app/Services/project-service.service';
+import { UserData } from 'src/app/Modal/user';
+import { UserServiceService } from 'src/app/Services/user-service.service';
 
 
 interface Year{
@@ -32,7 +34,7 @@ checked2: boolean = true;
 //variable for fetching data
 client1:Client[] = [];
 project1:Project[]=[];
-
+user1:UserData[]=[];
 clientData:any[]=[];
 
 activities:Activity[]=[];
@@ -46,19 +48,25 @@ userEditDialogue?:boolean;
 
 selectedUser!:boolean;
 
+selectedProjectManager!:any;
+selectedQualityManager!:any;
+selectedTeamMember1!:any;
+selectedTeamMember2!:any;
+selectedTeamMember3!:any;
 
-selectedClient!:any;
-selectedYear!:number;
-selectedActivity!:string;
+selectedClientId!:any;
+selectedYear!:any;
+selectedActivity!:any;
 
 singleClientPrecisionId!:string;
 
+loader:boolean=true;
 itr:any;
 
 cNames:any;
 years:Year[];
 
-constructor(private obj:ClientServiceService, private pro:ProjectServiceService, private router:Router) {
+constructor(private obj:ClientServiceService, private pro:ProjectServiceService,private user:UserServiceService, private router:Router) {
   this.years=[];
   for(let i=1951;i<=2050;i++)
   {
@@ -76,19 +84,29 @@ constructor(private obj:ClientServiceService, private pro:ProjectServiceService,
 
 
 ngOnInit() {
+  
+  
   this.obj.getClientData().subscribe((data:any)=>{
-    
-    
-    this.client1=data;  
+    this.client1=data['content'];      
   })
 
 
   this.pro.getProjectData().subscribe((data:any)=>{
-    this.project1=data;
+    if (data) 
+    {
+      this.hideloader();
+    }
+    this.project1=data['content'];
+  })
+
+  this.user.getUserData().subscribe((data:any)=>{
+    this.user1=data['content'];
   })
 
 }
-
+hideloader() {
+    this.loader=false;
+}
 
 
 
@@ -110,18 +128,32 @@ createProject(){
   this.submitted=true;
   if(this.project.projectName?.trim()){
     if(this.project.id){
-     this.project.clientName=this.selectedClient;
-     this.project.annualYear=this.selectedYear;
-    this.project.activity=this.selectedActivity;
+      this.project.clientId=this.selectedClientId.id;
+      this.project.annualYear=this.selectedYear.year;
+      this.project.activity=this.selectedActivity.activity;
+      this.project.projectManagerId=this.selectedProjectManager.memberid;
+      this.project.qualityManagerId=this.selectedQualityManager.memberid;
+      this.project.teamMemberId1=this.selectedTeamMember1.memberid;
+      this.project.teamMemberId2=this.selectedTeamMember2.memberid;
+      this.project.teamMemberId3=this.selectedTeamMember3.memberid;
   }
   else 
   {
-     this.project.clientName=this.selectedClient;
-     this.project.annualYear=this.selectedYear;
-     this.project.activity=this.selectedActivity;
+     this.project.clientId=this.selectedClientId.id;
+     this.project.annualYear=this.selectedYear.year;
+     this.project.activity=this.selectedActivity.activity;
+     this.project.projectManagerId=this.selectedProjectManager.memberid;
+     this.project.qualityManagerId=this.selectedQualityManager.memberid;
+     this.project.teamMemberId1=this.selectedTeamMember1.memberid;
+     this.project.teamMemberId2=this.selectedTeamMember2.memberid;
+     this.project.teamMemberId3=this.selectedTeamMember3.memberid;
 
-      this.project.id = this.createId();
+      this.project.id = parseInt(this.createId());
+      console.log(this.project,"before creating project");
+      
      this.pro.createProject(this.project).subscribe((result)=>{
+       console.log(result,"after project creation");
+       
               //window.location.reload();
       })
   }
@@ -151,7 +183,7 @@ createId(): string {
 }
 
 
-findIndexById(id:string)
+findIndexById(id:number)
 {
   let index = -1;
   for (let i = 0; i < this.project1.length; i++) {
@@ -161,5 +193,11 @@ findIndexById(id:string)
       }
   }
   return index;
+}
+
+editProject(projects:Project){
+  this.project={...projects};
+      // this.submitted=false;
+      this.projectDialog=true;
 }
 }
